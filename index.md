@@ -4,7 +4,7 @@ You can use the [editor on GitHub](https://github.com/hanmingz/f1tenthmanual/edi
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-<img src="f10cover.png" alt="hi" class="inline"/>
+<img src="f10cover.PNG" alt="hi" class="inline"/>
 
 ### Markdown
 
