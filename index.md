@@ -6,6 +6,9 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 <img src="f10cover.PNG" alt="hi" class="inline"/>
 
+1. The generated Toc will be an ordered list
+{:toc}
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
