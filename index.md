@@ -1,3 +1,10 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/hanmingz/f1tenthmanual/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
@@ -7,7 +14,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 <img src="f10cover.PNG" alt="hi" class="inline"/>
 
 1. The generated Toc will be an ordered list
-{:toc: left}
+{:toc}
 
 ### Markdown
 
