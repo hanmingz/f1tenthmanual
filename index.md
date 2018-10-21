@@ -1,18 +1,13 @@
-<!-- ---
-layout: default
----
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults -->
 
+## Welcome to manual page of F1/10!
+{:.no_toc}
 
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/hanmingz/f1tenthmanual/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This site will be the future place of reference for F1/10 race cars! But it is a work in progress for now, so place refer to [Car Assembly Page](http://f1tenth.org/car-assembly) to look at the pdf manual
 
 <img src="f10cover.PNG" alt="hi" class="inline"/>
 
+## Table of Contents
+{:.no_toc}
 1. The generated Toc will be an ordered list
 {:toc}
 
@@ -43,6 +38,8 @@ For more details see [GitHub Flavored Markdown](https://guides.github.com/featur
 ### Jekyll Themes
 
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hanmingz/f1tenthmanual/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+
+[Back to Top](#table-of-contents)
 
 ### Support or Contact
 
