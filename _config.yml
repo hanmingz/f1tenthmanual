@@ -19,7 +19,7 @@ email: hanmingz@seas.upenn.edu
 #   Manual for F1/10 race cars!
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
-# github_username:  hanmingz
+github_username:  hanmingz
 
 # Build settings
 theme: jekyll-theme-cayman
@@ -38,3 +38,6 @@ markdown: kramdown
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+kramdown: 
+  toc_levels: 2..4
