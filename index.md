@@ -63,7 +63,9 @@ Optional: (1) HDMI dummy plug and (1) USB Wi-Fi adapter for connecting to the ca
 ## Preparing and Assembling the Car
 
 ### Preparing the Car 
+
 TODO: will fill out when the fourth Traxxas car arrives<br/>
+
 Obtaining the Power Board<br/>
 [1. Instructions on getting the power board from Penn,
 2. and a link to files that you would send to a PCB company like 4PCB or PCBWay. Currently on github ​https://github.com/mlab-upenn/f1tenth-dev/tree/master/power-board-v2.0​ ]<br/>
