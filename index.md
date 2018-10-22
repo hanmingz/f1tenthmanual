@@ -60,7 +60,10 @@ Optional: (1) HDMI dummy plug and (1) USB Wi-Fi adapter for connecting to the ca
 
 <img src="F10Materials.PNG" alt="hi" class="inline"/>
 
+
+
 ## Preparing and Assembling the Car
+
 
 ### Preparing the Car 
 
@@ -74,8 +77,12 @@ A note on why we have a power board:​ The power board is used to provide a sta
 
 ### Installing the Body Standoffs
 
-Begin by installing four 45mm M3 standoffs into the holes of the main car body pictured below. Secure the standoffs to the bottom of the car using 10mm M3 screws, and use either nosepliers or a hex driver to hold the standoff in place while you turn the screw on the other side. Pay attention to where you install the standoffs since there are several mounting holes on the car's base. See the picture below for clarification.
+Begin by installing four 45mm M3 standoffs into the holes of the main car body pictured below. Secure the standoffs to the bottom of the car using 10mm M3 screws, and use either nosepliers or a hex driver to hold the standoff in place while you turn the screw on the other side. Pay attention to where you install the standoffs since there are several mounting holes on the car's base. See the picture below for clarification.<br/>
+
 Next, install two threaded 14mm M3 standoffs into the front holes in the car base, using the pliers or hex driver to thread the standoffs into the holes. Don't mount the chassis to the car yet since we still need to mount the Jetson and power board to the chassis.<br/>
+
+
+
 
 [Back to Top](#table-of-contents)
 
