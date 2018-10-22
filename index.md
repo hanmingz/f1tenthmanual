@@ -50,6 +50,14 @@ Note: as of August 2018, this car is sold with a brushed motor by Traxxas. See l
 (1) HDMI display<br/>
 Optional: (1) HDMI dummy plug and (1) USB Wi-Fi adapter for connecting to the car via VNC
 
+#### Tools
+(1) Metric ruler
+(1) Needle-nose pliers
+(1) Wire strippers
+(1) 2mm width or smaller flathead screwdriver
+(1) 5/64 inch diameter hex driver key or small Phillips screwdriver (1) Hex socket driver or wrench (to hold standoffs in place)
+(1) T3 Torx screwdriver
+
 [Back to Top](#table-of-contents)
 
 ### Markdown
