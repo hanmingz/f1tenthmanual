@@ -60,6 +60,8 @@ Optional: (1) HDMI dummy plug and (1) USB Wi-Fi adapter for connecting to the ca
 
 <img src="F10Materials.PNG" alt="hi" class="inline"/>
 
+## Preparing and Assembling the Car
+
 [Back to Top](#table-of-contents)
 
 ### Markdown
