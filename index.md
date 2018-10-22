@@ -81,15 +81,15 @@ Begin by installing four 45mm M3 standoffs into the holes of the main car body p
 
 Next, install two threaded 14mm M3 standoffs into the front holes in the car base, using the pliers or hex driver to thread the standoffs into the holes. Don't mount the chassis to the car yet since we still need to mount the Jetson and power board to the chassis.<br/>
 
-<img src="InstallingStandOffs.PNG" alt="hi" class="inline"/>
+<img src="InstallingStandOffs.png" alt="hi" class="inline"/>
 
-<img src="InstallingStandOffs2.PNG" alt="hi" class="inline"/>
+<img src="InstallingStandOffs2.png" alt="hi" class="inline"/>
 
 
 ### Mounting the FOCbox to the Chassis
 Feed the three motor wires for the FOCbox through the rectangular slot in the chassis as shown below.
 
-<img src="FOCBoxToChassis.PNG" alt="hi" class="inline"/>
+<img src="FOCBoxToChassis.png" alt="hi" class="inline"/>
 
 [Back to Top](#table-of-contents)
 
