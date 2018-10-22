@@ -58,6 +58,8 @@ Optional: (1) HDMI dummy plug and (1) USB Wi-Fi adapter for connecting to the ca
 (1) 5/64 inch diameter hex driver key or small Phillips screwdriver (1) Hex socket driver or wrench (to hold standoffs in place)<br/>
 (1) T3 Torx screwdriver<br/>
 
+<img src="F10Materials.PNG" alt="hi" class="inline"/>
+
 [Back to Top](#table-of-contents)
 
 ### Markdown
