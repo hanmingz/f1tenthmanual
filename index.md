@@ -49,6 +49,7 @@ Note: as of August 2018, this car is sold with a brushed motor by Traxxas. See l
 (1) USB keyboard and mouse<br/>
 (1) HDMI display<br/>
 Optional: (1) HDMI dummy plug and (1) USB Wi-Fi adapter for connecting to the car via VNC
+[Back to Top](#table-of-contents)
 
 #### Tools
 (1) Metric ruler<br/>
@@ -57,8 +58,9 @@ Optional: (1) HDMI dummy plug and (1) USB Wi-Fi adapter for connecting to the ca
 (1) 2mm width or smaller flathead screwdriver<br/>
 (1) 5/64 inch diameter hex driver key or small Phillips screwdriver (1) Hex socket driver or wrench (to hold standoffs in place)<br/>
 (1) T3 Torx screwdriver<br/>
+[Back to Top](#table-of-contents)
 
-<img src="F10Materials.PNG" alt="hi" class="inline"/>
+<img src="01whatYouNeedToStart/F10Materials.PNG" alt="hi" class="inline"/>
 
 
 
@@ -74,6 +76,7 @@ Obtaining the Power Board<br/>
 2. and a link to files that you would send to a PCB company like 4PCB or PCBWay. Currently on github ​https://github.com/mlab-upenn/f1tenth-dev/tree/master/power-board-v2.0​ ]<br/>
  
 A note on why we have a power board:​ The power board is used to provide a stable voltage source for the car and its peripherals since the battery voltage drops as the battery runs out. The board does not do any charging of the battery, so you will need a Traxxas EZ-Peak charger to charge it (you can find them on Traxxas' website). At present, there's no way to know the battery's charge level except by measuring it with a multimeter or the BLDC Tool as it runs, but we could think about adding a low voltage LED or seven-segment LCD display (to show the voltage) to the next iteration of the board. The LIPO protection module and green connectors are currently unused and are a legacy from previous F1/10 car iterations which used the Teensy microcontroller as a motor driver.<br/>
+[Back to Top](#table-of-contents)
 
 ### Installing the Body Standoffs
 
@@ -84,12 +87,14 @@ Next, install two threaded 14mm M3 standoffs into the front holes in the car bas
 <img src="InstallingStandOffs.png" alt="hi" class="inline"/>
 
 <img src="InstallingStandOffs2.png" alt="hi" class="inline"/>
-
+[Back to Top](#table-of-contents)
 
 ### Mounting the FOCbox to the Chassis
 Feed the three motor wires for the FOCbox through the rectangular slot in the chassis as shown below.
 
 <img src="FOCBoxToChassis.png" alt="hi" class="inline"/>
+
+Alternate method of securing the FOCbox if screws don’t fit​ : Some FOCboxes (the more recently-made ones) have smaller screw holes that won’t fit M3-size screws. If this is the case for your FOCbox, you can use a few pieces of double-sided tape to secure the FOCbox instead.<br/>
 
 [Back to Top](#table-of-contents)
 
