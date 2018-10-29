@@ -84,20 +84,81 @@ Begin by installing four 45mm M3 standoffs into the holes of the main car body p
 
 Next, install two threaded 14mm M3 standoffs into the front holes in the car base, using the pliers or hex driver to thread the standoffs into the holes. Don't mount the chassis to the car yet since we still need to mount the Jetson and power board to the chassis.<br/>
 
-<img src="InstallingStandOffs.png" alt="hi" class="inline"/>
+<img src="02PreparingAndAssemblingTheCar/InstallingStandOffs.png" alt="hi" class="inline"/>
 
-<img src="InstallingStandOffs2.png" alt="hi" class="inline"/>
+<img src="02PreparingAndAssemblingTheCar/InstallingStandOffs2.png" alt="hi" class="inline"/>
 [Back to Top](#table-of-contents)
 
 ### Mounting the FOCbox to the Chassis
 Feed the three motor wires for the FOCbox through the rectangular slot in the chassis as shown below.
 
-<img src="FOCBoxToChassis.png" alt="hi" class="inline"/>
+<img src="02PreparingAndAssemblingTheCar/FOCBoxToChassis.png" alt="hi" class="inline"/>
 
 Alternate method of securing the FOCbox if screws don’t fit​ : Some FOCboxes (the more recently-made ones) have smaller screw holes that won’t fit M3-size screws. If this is the case for your FOCbox, you can use a few pieces of double-sided tape to secure the FOCbox instead.<br/>
 
+<img src="02PreparingAndAssemblingTheCar/AlternateFOCbox.png" alt="hi" class="inline"/>
+
 [Back to Top](#table-of-contents)
 
+### Installing the Chassis Standoffs
+Mount eight 35mm M3 standoffs to the ​ glossy side​ of the black laser-cut chassis in the
+positions shown below. Thread 10mm M3 screws through the drill holes and screw
+them into the standoffs to secure them. (​ Important​ : If you do not mount the standoffs to
+the glossy side, the power board won't fit since the screw holes will be misaligned.) <br/>
+
+Note there are several drill holes in the chassis, so make sure you’re using the right
+ones. In the image below, the 4 screws on the left(which is the back of the car) will
+eventually hold the power board, so that’s a good way to see if they’re properly placed.
+The 4 screws on the right (2 on each side of the oval cutout) will eventually hold the
+Orbitty carrier attached to the Jetson.<br/>
+
+<img src="02PreparingAndAssemblingTheCar/chasisstandoff1.png" alt="hi" class="inline"/>
+
+Mount two more (19mm M3) standoffs to the front part of the chassis for the LIDAR, and
+secure with 10mm screws. The top part of the chassis should look like the picture
+below.
+
+<img src="02PreparingAndAssemblingTheCar/chasisstandoff2.png" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
+
+### Detaching the Jetson from the Development Board
+When you purchase a Jetson, it is attached to a development board. In order to use it
+on the car, you will need to unscrew the Jetson and its Wi-Fi antenna from the
+development board.<br/>
+Before you remove the antenna, you will need to remove the bottom plate from the
+development board. Remove the four screws marked below and lift the development
+board away from the plate.<br/>
+
+<img src="02PreparingAndAssemblingTheCar/jetson1.png" alt="hi" class="inline"/>
+
+Next, remove the Wi-Fi antenna by unscrewing the two screws marked below. Keep the
+screws in a safe place, as you’ll use them in a bit to attach the antennas to standoffs. <br/>
+
+<img src="02PreparingAndAssemblingTheCar/jetson2.png" alt="hi" class="inline"/>
+
+Remove the two brass-colored nuts holding the antennas to the L-shaped bracket, and
+then remove the two antennas from the bracket. It helps to use two pairs of pliers: one
+to hold the rear nuts in place and another to unscrew the nuts on the end with the
+antenna connectors.<br/>
+
+<img src="02PreparingAndAssemblingTheCar/jetson3.png" alt="hi" class="inline"/>
+
+Using a Phillips screwdriver, thread the two screws you saved earlier completely into
+the bracket as pictured below. Attach two standoffs to the opposite ends of the screws
+and hand-tighten them until they won’t turn anymore. Use the pliers to tighten the
+standoffs more while you hold the head of the screw in place using the screwdriver.
+Once you’ve done these steps, place the antennas and washers back into the bracket,
+and tighten the brass nuts onto the threaded connectors again.<br/>
+
+<img src="02PreparingAndAssemblingTheCar/jetson4.png" alt="hi" class="inline"/>
+
+Unplug the Jetson’s fan and remove the Jetson from the development board by using a
+T3 Torx screwdriver to unscrew the Jetson (the large silver heat sink), and then pull up
+gently to detach it from the development board. Keep the Jetson in a safe place while
+you attach the antennas to the power board.<br/>
+
+<img src="02PreparingAndAssemblingTheCar/jetson5.png" alt="hi" class="inline"/>
 
 
 ### Markdown
