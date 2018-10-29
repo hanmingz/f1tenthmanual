@@ -159,6 +159,128 @@ gently to detach it from the development board. Keep the Jetson in a safe place 
 you attach the antennas to the power board.<br/>
 
 <img src="02PreparingAndAssemblingTheCar/jetson5.png" alt="hi" class="inline"/>
+[Back to Top](#table-of-contents)
+
+
+### Mounting the Wi-Fi Antennas to the Power Board
+Attach the two standoffs for the Wi-Fi antenna bracket to the power board, making sure
+the antennas, when installed and extended, lie ​ over ​ the board and now away from it.
+Install the two black antennas onto the threaded connectors if they aren’t already on.<br/>
+
+<img src="02PreparingAndAssemblingTheCar/wifi1.png" alt="hi" class="inline"/>
+
+Attach the two wires for the Jetson Wi-Fi antenna to the two gold-colored connectors
+near the fan connector on the heat sink (the order of the wires doesn’t matter). This can
+be a little tricky, so you might want to use a flathead screwdriver to ensure the
+connections are tight. ​ Don’t press too hard​ , however as you can easily damage the
+connectors if you use excessive force!
+
+<img src="02PreparingAndAssemblingTheCar/wifi2.png" alt="hi" class="inline"/>
+[Back to Top](#table-of-contents)
+
+### Mounting the Power Board to the Chassis
+
+Screw the power board onto its chassis standoffs using 10mm M3 screws. The screw
+positions are indicated with arrows below.
+
+<img src="02PreparingAndAssemblingTheCar/powerboard1.png" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
+
+
+### Attaching the Orbitty to the Jetson
+Attach the Orbitty to the Jetson by connecting the two long black ports and connect the Jetson’s
+fan to the Orbitty’s fan connector as shown in the pictures below..
+
+<img src="02PreparingAndAssemblingTheCar/orbittyjetson.png" alt="hi" class="inline"/>
+[Back to Top](#table-of-contents)
+
+
+### Connecting the Jetson and Power Board
+Cut two 8-inch pieces of wire of different colors (preferably red and black), and strip
+both ends to a short length (1/8 inch). Locate the green terminal block on the Jetson
+and attach one end of one wire to the + ​ Vin​ terminal, and the other end to one of the
+green 1 ​ 2V​ terminals on the power board. (Any of the 12 volt terminals are acceptable. To
+attach, insert the stripped end into the terminal and screw the little screw tight with a
+small flathead screwdriver.) Attach the other stripped wire to the G ​ ND​ terminal on the
+Jetson and to the G ​ ND​ terminal on the corresponding terminal block on the power board.
+
+<img src="02PreparingAndAssemblingTheCar/jetsonpowerboard.png" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
+
+### Mounting the Jetson to the Chassis
+Your kit comes with four white plastic standoffs; place these between the Jetson PCB
+and heatsink (see picture) ​ before ​ threading the screws through. Otherwise, you risk
+bending the Orbitty while screwing it in. Use 20mm screws to secure the Jetson to its
+chassis standoffs.
+
+<img src="02PreparingAndAssemblingTheCar/jetsonchassis.png" alt="hi" class="inline"/>
+
+Ensure that when you mount the Jetson that the wires for neither the Wi-Fi antenna nor
+the Jetson's power connections get pinched. It might help to tuck both sets of wires
+underneath the power board. (Don't tuck them underneath the Jetson because they
+might restrict airflow or obstruct the fan's blades.) Your configuration should now look
+something like this:
+
+<img src="02PreparingAndAssemblingTheCar/jetsonchassis2.png" alt="hi" class="inline"/>
+
+
+[Back to Top](#table-of-contents)
+
+### Mounting the Chassis to the Car Underbody
+Place the chassis onto the five standoffs on the car base and align the chassis’ drill
+holes with the car’s base standoffs you attached earlier as shown below. Use six 10mm
+M3 screws to secure the chassis to the standoffs.
+
+<img src="02PreparingAndAssemblingTheCar/chassisunderbody.png" alt="hi" class="inline"/>
+[Back to Top](#table-of-contents)
+
+### Mounting the LIDAR
+The LIDAR should have two cords: one for power and another for either Ethernet or
+USB. Cut the end of the power cord, leaving 1-2 feet of cable. Strip the end, cut away all
+wires except for the blue and brown ones, and strip those two wires to 1/8 inch as
+shown below.
+
+<img src="02PreparingAndAssemblingTheCar/lidar1.png" alt="hi" class="inline"/>
+
+Attach the LIDAR to the tree-shaped base using two (10LX) or four (30LX) screws, such
+that the wires protruding from the LIDAR go towards the back of the car. (For the 30LX,
+the two LEDs at the top of the LIDAR should face the front of the car.) Then mount the
+C-shaped brackets to the black tree-shaped base as shown in the pictures below. ​ Note:
+if the black mount does not fit in the holes of the C brackets, sand the inserts until they
+do.
+<img src="02PreparingAndAssemblingTheCar/lidar2.png" alt="hi" class="inline"/>
+
+Mount the LIDAR to the car by fitting the two thick protruding parts of the mounting
+brackets into the holes. The open part of the "C" in the brackets should face forward as
+shown below.
+<img src="02PreparingAndAssemblingTheCar/lidar3.png" alt="hi" class="inline"/>
+
+If you completed the previous steps correctly, two of the holes on the narrow end of the
+LIDAR base should match up with the two 19mm standoffs you mounted earlier. Wind
+the power and USB cords of the LIDAR around its base so that there is just enough
+available to plug into the power board and Jetson, with a little bit of slack so that it is not
+too tight. Tuck both cords under the LIDAR mounting plate between the two silverstandoffs, and secure the LIDAR base to the standoffs on the chassis using two 10mm
+M3 screws.
+<img src="02PreparingAndAssemblingTheCar/lidar4.png" alt="hi" class="inline"/>
+[Back to Top](#table-of-contents)
+
+### Mounting the USB Hubs
+Attack two pieces of double-sided tape to a USB hub. Place the hub onto the empty space of
+the chassis directly below the Jetson and to the right of the power board as shown. If your hub
+has power buttons, make sure all of them are turned on.
+
+<img src="02PreparingAndAssemblingTheCar/usb1.png" alt="hi" class="inline"/>
+
+If you need more USB ports (required if your LiDAR uses USB), you can stack a second hub
+onto the top of the first. Again, use double-sided tape to secure the second hub and make sure
+all power buttons are on.<br/>
+
+Plug the first USB hub into the Orbitty board. If you’re using a second hub, use the white micro
+USB adapter that comes with the Jetson to plug in the second hub.
+
+<img src="02PreparingAndAssemblingTheCar/usb2.png" alt="hi" class="inline"/>
 
 
 ### Markdown
