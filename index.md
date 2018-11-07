@@ -78,6 +78,7 @@ Obtaining the Power Board<br/>
 A note on why we have a power board:​ The power board is used to provide a stable voltage source for the car and its peripherals since the battery voltage drops as the battery runs out. The board does not do any charging of the battery, so you will need a Traxxas EZ-Peak charger to charge it (you can find them on Traxxas' website). At present, there's no way to know the battery's charge level except by measuring it with a multimeter or the BLDC Tool as it runs, but we could think about adding a low voltage LED or seven-segment LCD display (to show the voltage) to the next iteration of the board. The LIPO protection module and green connectors are currently unused and are a legacy from previous F1/10 car iterations which used the Teensy microcontroller as a motor driver.<br/>
 [Back to Top](#table-of-contents)
 
+
 ### Installing the Body Standoffs
 
 Begin by installing four 45mm M3 standoffs into the holes of the main car body pictured below. Secure the standoffs to the bottom of the car using 10mm M3 screws, and use either nosepliers or a hex driver to hold the standoff in place while you turn the screw on the other side. Pay attention to where you install the standoffs since there are several mounting holes on the car's base. See the picture below for clarification.<br/>
@@ -88,6 +89,7 @@ Next, install two threaded 14mm M3 standoffs into the front holes in the car bas
 
 <img src="02PreparingAndAssemblingTheCar/InstallingStandOffs2.png" alt="hi" class="inline"/>
 [Back to Top](#table-of-contents)
+
 
 ### Mounting the FOCbox to the Chassis
 Feed the three motor wires for the FOCbox through the rectangular slot in the chassis as shown below.
@@ -121,6 +123,7 @@ below.
 <img src="02PreparingAndAssemblingTheCar/chasisstandoff2.png" alt="hi" class="inline"/>
 
 [Back to Top](#table-of-contents)
+
 
 ### Detaching the Jetson from the Development Board
 When you purchase a Jetson, it is attached to a development board. In order to use it
@@ -266,10 +269,11 @@ M3 screws.
 <img src="02PreparingAndAssemblingTheCar/lidar4.png" alt="hi" class="inline"/>
 [Back to Top](#table-of-contents)
 
+
 ### Mounting the USB Hubs
 Attack two pieces of double-sided tape to a USB hub. Place the hub onto the empty space of
 the chassis directly below the Jetson and to the right of the power board as shown. If your hub
-has power buttons, make sure all of them are turned on.
+has power buttons, make sure all of them are turned on.<br/> 
 
 <img src="02PreparingAndAssemblingTheCar/usb1.png" alt="hi" class="inline"/>
 
@@ -281,6 +285,12 @@ Plug the first USB hub into the Orbitty board. If you’re using a second hub, u
 USB adapter that comes with the Jetson to plug in the second hub.
 
 <img src="02PreparingAndAssemblingTheCar/usb2.png" alt="hi" class="inline"/>
+
+
+### Connecting the LIDAR
+
+Attach the LIDAR's power cable to a free 12V terminal block on the power board. The brown wire should go to the 12V terminal, and the blue wire should go to the corresponding GND terminal. The side of the LIDAR has a pinout as well if you forget.
+
 
 
 ### Markdown
