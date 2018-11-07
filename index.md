@@ -282,6 +282,39 @@ USB adapter that comes with the Jetson to plug in the second hub.
 
 <img src="02PreparingAndAssemblingTheCar/usb2.png" alt="hi" class="inline"/>
 
+### Connecting the LIDAR
+Attach the LIDAR's power cable to a free 12V terminal block on the power board. ​ The
+brown wire should go to the 12V terminal, and the blue wire should go to the
+corresponding GND terminal. The side of the LIDAR has a pinout as well if you forget. <br/>
+
+If the LIDAR has an Ethernet cable, attach it to the Ethernet port on the Jetson. If it has
+a USB cable, plug it into the USB hub. Route any excess cables behind the USB hubs
+as shown. 
+
+### Connecting the FOCbox
+Pass the 3 round FOCbox wires through the rectangular slot in the plastic chassis, then connect
+the 3 circular bullet connectors to the three motor wires. (The order in which you connect the
+wires kinda doesn’t matter (electrically speaking). If you run the car and it goes backwards when
+it should go forwards, you can swap any two of the three wires.) Connect the 3-wire servo
+ribbon cable as well, making sure the colors match up. <br/>
+
+<img src="racecarimages/110806531436052.jpg" width="425"/> <img src="110806531436053.jpg" width="425"/> 
+
+If your micro USB cable is thin enough, thread it through the rectangular wire slot and around
+the FOCbox to the USB connector as shown below, or route it around the rear end of the
+chassis if it isn’t. Plug the cable into the FOCbox’s USB connector and into a free port on your
+USB hub. Tie the USB cable up using a cable tie, and tuck all of the wires underneath the
+chassis. You can also use this time to plug in the LIDAR (if it is USB), the external Wi-FI
+adapter, and the receiver for the F710 gamepad.
+
+<img src="racecarimages/110806531436054.jpg" width="425"/><img src="racecarimages/110806531436055.jpg" width="425"/><img src="racecarimages/110806531436056.jpg" width="425"/>
+
+### Connecting the Car to the Battery
+Connect the battery to the FOCbox using the battery connector. ​ Make sure that red is aligned
+with red and black is aligned with black - otherwise things will get hot and dicey. ​ Then connect
+the FOCbox to the power board using the white port shown in the picture below. <br/>
+
+<img src="racecarimages/110806531436057.jpg" width="425"/>
 
 ### Markdown
 {:.no_toc}
