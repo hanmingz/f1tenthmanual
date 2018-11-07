@@ -291,7 +291,7 @@ USB adapter that comes with the Jetson to plug in the second hub.
 
 Attach the LIDAR's power cable to a free 12V terminal block on the power board. The brown wire should go to the 12V terminal, and the blue wire should go to the corresponding GND terminal. The side of the LIDAR has a pinout as well if you forget.
 
-
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
 
 ### Markdown
 {:.no_toc}
