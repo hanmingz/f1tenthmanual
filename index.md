@@ -291,7 +291,59 @@ USB adapter that comes with the Jetson to plug in the second hub.
 
 Attach the LIDAR's power cable to a free 12V terminal block on the power board. The brown wire should go to the 12V terminal, and the blue wire should go to the corresponding GND terminal. The side of the LIDAR has a pinout as well if you forget.
 
+<img src="02PreparingAndAssemblingTheCar/Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+If the LIDAR has an Ethernet cable, attach it to the Ethernet port on the Jetson. If it has a USB cable, plug it into the USB hub. Route any excess cables behind the USB hubs as shown. <br/>
+
 <img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+
+### Connecting the FOCbox
+
+Pass the 3 round FOCbox wires through the rectangular slot in the plastic chassis, then connect the 3 circular bullet connectors to the three motor wires. (The order in which you connect the wires kinda doesn’t matter (electrically speaking). If you run the car and it goes backwards when it should go forwards, you can swap any two of the three wires.) Connect the 3-wire servo ribbon cable as well, making sure the colors match up. <br/>
+
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+If your micro USB cable is thin enough, thread it through the rectangular wire slot and around the FOCbox to the USB connector as shown below, or route it around the rear end of the chassis if it isn’t. Plug the cable into the FOCbox’s USB connector and into a free port on your USB hub. Tie the USB cable up using a cable tie, and tuck all of the wires underneath the chassis. You can also use this time to plug in the LIDAR (if it is USB), the external Wi-FI adapter, and the receiver for the F710 gamepad.
+
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+
+### Connecting the Car to the Battery
+
+Connect the battery to the FOCbox using the battery connector. ​Make sure that red is aligned with red and black is aligned with black - otherwise things will get hot and dicey. ​Then connect the FOCbox to the power board using the white port shown in the picture below. <br/>
+
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+At this point, your car should be assembled, the Jetson lights should flash when you flip the power switch, and the car is ready to run!  <br/>
+
+Note: At present, there's no way to know the battery's charge level except by measuring it with a multimeter as it runs. You might consider adding a low voltage LED or seven-segment LCD display (to show the voltage). <br/>
+
+
+### Tuning the FOCbox’s PID Gains
+
+In this section we use the words FOCbox and VESC interchangeably.
+
+Important Safety Tips<br/>
+
+● Make sure you hold on to the car while testing the motor to prevent it from flying off the stand. <br/>
+● Make sure there are no objects (or people) in the vicinity of the wheels while testing.<br/>
+● It’s a good idea to use a fully-charged LiPO battery instead of a power supply to ensure
+the motor has enough current to spin up.<br/>
+
+1. Put your car on an elevated stand so that its wheels can turn without it going anywhere. If you don’t have an RC car stand, you can use the box that came with your Jetson.<br/>
+
+2. Connect the host laptop to the FOCbox using a USB cable.<br/>
+
+3. Download bldc tool from JetsonHacks (​https://github.com/jetsonhacks/installBLDC​),
+following his instructions for installation.<br/>
+
+4. Open BLDC Tool and click the “Connect” button at the top right of the window to connect
+to the VESC.<br/>
+
+a. If you get the error “Device not found”, try running the command ​lsusb​ in a
+terminal. You should see an entry for “STMicroelectronics STMF407” or something similar. If you don’t, try unplugging and plugging in the USB cable on both ends. If the problem doesn’t go away, try rebooting the Jetson.<br/>
+
 
 ### Markdown
 {:.no_toc}
