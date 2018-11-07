@@ -393,11 +393,11 @@ likely the Jetson as well) and could cause a short circuit.<br/>
 See ​this video​ and ​this video​ for examples of what might happen if you don’t take care of your batteries. Be safe and don’t let these happen to you!<br/>
 
 
-### Basic software install
+# Basic software install
 
 ## On Your Laptop
 
-# Supported Versions 
+### Supported Versions 
 
 You will need to install the OS Ubuntu Xenial 16.04.01 and ROS Kinetic. <b/r>
 Could other combinations work? Sure.<b/r>
@@ -417,7 +417,7 @@ On a high level, these are the things that need to be installed on the Jetson.<b
 3. A re-flash of the Connect Tech Orbitty<b/r>
 4. ROS Kinetic<b/r>
 
-# Connect terminals to the Jetson (aka “the device”)
+### Connect terminals to the Jetson (aka “the device”)
 
 (These instructions are also in the Jeston’s Quick Start Guide under “Force USB Recovery Mode”. Refer to it to see all the buttons, ports and whatnot.)<b/r>
 
@@ -431,13 +431,13 @@ The Jetson should power on. If it doesn’t, push the ON button. Login: nvidia
 Password: nvidia<b/r>
 <img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
 
-# Install Linux
+### Install Linux
 Run
 $ cat NVIDIA-INSTALLER/README.txt
 
 And run the instructions that are in that file to install Ubuntu Linux. Note that TX1 comes with 14.04 LTS and TX2 comes with 16.04 LTS. There may be an additional step for TX1 if the course is using 16.04 LTS.<b/r>
 
-# Flash the Jetpack
+### Flash the Jetpack
 NOTE: you will need some 14GB of free space on the host computer for this step.<b/r>
 
 Now that we have the GUI, we want to flash the Jetson with Nvidia’s Jetpack 3.2.<b/r>
@@ -446,11 +446,11 @@ To do this, we need a host computer that is running Linux 14.04 (it seems 16.04 
 
 What if you don’t have a Linux 14.04 computer laying around? (most of us don’t). See ​Appendix A​ of this doc for an amazing set of instructions by Klein Yuan which details how to use a virtual machine with a Mac to do the flash. Steps would probably work similarly for a PC that is running Virtual Box.<b/r>
 
-# Re-flash the Orbitty
+### Re-flash the Orbitty
 
 After the Jetson has been flashed with Jetpack, we will actually need to re-flash it with the Connect Tech Orbitty firmware. Otherwise on the TX2 there can be issues with the USB 3.0 not working on the Orbitty carrier board. A great link to instructions is from NVIDIA-Jetson: https://github.com/NVIDIA-Jetson/jetson-trashformers/wiki/JetsonTM-Flashing-and-Setup-Guide-f or-a-Connect-Tech-Carrier-Board​. ​Note that each time you flash all of the files<b/r> will essentially be deleted from your Jetson​. So make sure to save any work you may have already done and upload it.
      
-# Install ROS
+### Install ROS
 
 Lastly, we will want to install ROS Kinetic. Jetson Hacks on Github has scripts to install ROS Kinetic.
 - Here for TX2: ​https://github.com/jetsonhacks/installROSTX2​.
