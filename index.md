@@ -78,6 +78,7 @@ Obtaining the Power Board<br/>
 A note on why we have a power board:​ The power board is used to provide a stable voltage source for the car and its peripherals since the battery voltage drops as the battery runs out. The board does not do any charging of the battery, so you will need a Traxxas EZ-Peak charger to charge it (you can find them on Traxxas' website). At present, there's no way to know the battery's charge level except by measuring it with a multimeter or the BLDC Tool as it runs, but we could think about adding a low voltage LED or seven-segment LCD display (to show the voltage) to the next iteration of the board. The LIPO protection module and green connectors are currently unused and are a legacy from previous F1/10 car iterations which used the Teensy microcontroller as a motor driver.<br/>
 [Back to Top](#table-of-contents)
 
+
 ### Installing the Body Standoffs
 
 Begin by installing four 45mm M3 standoffs into the holes of the main car body pictured below. Secure the standoffs to the bottom of the car using 10mm M3 screws, and use either nosepliers or a hex driver to hold the standoff in place while you turn the screw on the other side. Pay attention to where you install the standoffs since there are several mounting holes on the car's base. See the picture below for clarification.<br/>
@@ -88,6 +89,7 @@ Next, install two threaded 14mm M3 standoffs into the front holes in the car bas
 
 <img src="02PreparingAndAssemblingTheCar/InstallingStandOffs2.png" alt="hi" class="inline"/>
 [Back to Top](#table-of-contents)
+
 
 ### Mounting the FOCbox to the Chassis
 Feed the three motor wires for the FOCbox through the rectangular slot in the chassis as shown below.
@@ -121,6 +123,7 @@ below.
 <img src="02PreparingAndAssemblingTheCar/chasisstandoff2.png" alt="hi" class="inline"/>
 
 [Back to Top](#table-of-contents)
+
 
 ### Detaching the Jetson from the Development Board
 When you purchase a Jetson, it is attached to a development board. In order to use it
@@ -266,10 +269,11 @@ M3 screws.
 <img src="02PreparingAndAssemblingTheCar/lidar4.png" alt="hi" class="inline"/>
 [Back to Top](#table-of-contents)
 
+
 ### Mounting the USB Hubs
 Attack two pieces of double-sided tape to a USB hub. Place the hub onto the empty space of
 the chassis directly below the Jetson and to the right of the power board as shown. If your hub
-has power buttons, make sure all of them are turned on.
+has power buttons, make sure all of them are turned on.<br/> 
 
 <img src="02PreparingAndAssemblingTheCar/usb1.png" alt="hi" class="inline"/>
 
@@ -315,6 +319,116 @@ with red and black is aligned with black - otherwise things will get hot and dic
 the FOCbox to the power board using the white port shown in the picture below. <br/>
 
 <img src="racecarimages/110806531436057.jpg" width="425"/>
+
+### Connecting the LIDAR
+
+Attach the LIDAR's power cable to a free 12V terminal block on the power board. The brown wire should go to the 12V terminal, and the blue wire should go to the corresponding GND terminal. The side of the LIDAR has a pinout as well if you forget.
+
+<img src="02PreparingAndAssemblingTheCar/Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+If the LIDAR has an Ethernet cable, attach it to the Ethernet port on the Jetson. If it has a USB cable, plug it into the USB hub. Route any excess cables behind the USB hubs as shown. <br/>
+
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+
+### Connecting the FOCbox
+
+Pass the 3 round FOCbox wires through the rectangular slot in the plastic chassis, then connect the 3 circular bullet connectors to the three motor wires. (The order in which you connect the wires kinda doesn’t matter (electrically speaking). If you run the car and it goes backwards when it should go forwards, you can swap any two of the three wires.) Connect the 3-wire servo ribbon cable as well, making sure the colors match up. <br/>
+
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+If your micro USB cable is thin enough, thread it through the rectangular wire slot and around the FOCbox to the USB connector as shown below, or route it around the rear end of the chassis if it isn’t. Plug the cable into the FOCbox’s USB connector and into a free port on your USB hub. Tie the USB cable up using a cable tie, and tuck all of the wires underneath the chassis. You can also use this time to plug in the LIDAR (if it is USB), the external Wi-FI adapter, and the receiver for the F710 gamepad.
+
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+
+### Connecting the Car to the Battery
+
+Connect the battery to the FOCbox using the battery connector. ​Make sure that red is aligned with red and black is aligned with black - otherwise things will get hot and dicey. ​Then connect the FOCbox to the power board using the white port shown in the picture below. <br/>
+
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+At this point, your car should be assembled, the Jetson lights should flash when you flip the power switch, and the car is ready to run!  <br/>
+
+Note: At present, there's no way to know the battery's charge level except by measuring it with a multimeter as it runs. You might consider adding a low voltage LED or seven-segment LCD display (to show the voltage). <br/>
+
+
+
+### Tuning the FOCbox’s PID Gains
+
+In this section we use the words FOCbox and VESC interchangeably.
+
+Important Safety Tips<br/>
+
+● Make sure you hold on to the car while testing the motor to prevent it from flying off the stand. <br/>
+● Make sure there are no objects (or people) in the vicinity of the wheels while testing.<br/>
+● It’s a good idea to use a fully-charged LiPO battery instead of a power supply to ensure the motor has enough current to spin up.<br/>
+
+1. Put your car on an elevated stand so that its wheels can turn without it going anywhere. If you don’t have an RC car stand, you can use the box that came with your Jetson.<br/>
+
+2. Connect the host laptop to the FOCbox using a USB cable.<br/>
+
+3. Download bldc tool from JetsonHacks (​https://github.com/jetsonhacks/installBLDC​),
+following his instructions for installation.<br/>
+
+4. Open BLDC Tool and click the “Connect” button at the top right of the window to connect
+to the VESC.
+
+a. If you get the error “Device not found”, try running the command ​lsusb​ in a
+terminal. You should see an entry for “STMicroelectronics STMF407” or something similar. If you don’t, try unplugging and plugging in the USB cable on both ends. If the problem doesn’t go away, try rebooting the Jetson.<br/>
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+b. If you are using a VESC 4.12 (including a FOCbox), ensure the firmware version is 2.18.
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+5. Disable keyboard control by clicking the “KB Ctrl” button at the lower right. This will prevent your keyboard’s arrow keys from controlling the motor and is important to prevent damage to the car from it moving unexpectedly.
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+6. Start plotting the realtime RPM data by clicking the “Realtime Data” tab, and checking the “Activate sampling” checkbox at the bottom left of the window. Click the “RPM” tab above the graph.
+
+a. We will keep referring to this plot of the motor’s RPM as we tune the PID gains. Out goal is to get the motor to spin up as quickly as possible when we set it to a certain RPM. We also don’t want the motor to cog (not spin) or overshoot the target speed if possible.
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+7. Test the motor first (without PID speed control) by setting the “Duty Cycle” to 0.20. This will spin the motor up to approximately 16,000 - 17,000 RPM. Let this run for a few seconds, and then press the “Release Motor” button at the bottom right to stop it.
+
+a. Observe the RPM graph. If the motor is spinning backwards (the RPM is negative), try reversing two of the connections from the VESC to the motor. (It doesn’t matter which wires you reverse.)
+
+b. If the wheels don’t spin and the motor makes no noise, check to make sure all connections to the motor are tight.
+
+c. If the wheels don’t spin and the motor does, ensure the motor’s gear is attached correctly to the gearbox at the back of the car. Spin both front wheels with your hand to verify that the gear is making good contact. You should feel some resistance when turning the wheels.
+
+d. If the motor doesn’t spin and makes a humming or hissing sound, you might need to replace the motor. If this doesn’t work, try replacing the VESC.
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+8. Click the “Motor Configuration” tab at the top and the “Advanced” tab on the left. Set Ki and Kd to 0.00000, and set Kp to 0.00001. Click the “Write Configuration” button at the bottom, go back to the data plotting tab and run the car at 3000 RPM.
+a. You will notice that the car won’t even make it close, as it only goes up to around 1200 RPM. (High steady-state error.)
+b. Try turning Kp up to 0.00002, 0.00004, and 0.00008. (Don’t forget to write the configuration each time.) The motor will start to cog out at higher Kp values.
+<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+9. Set Kp back to 0.00002, and set Ki to 0.00002, and run the car at 3000 RPM again. Notice how the car slowly reaches the 3000 RPM target. (This is because adding Ki helps to eliminate steady-state error.)
+a. Keep increasing Ki; set it to 0.00005 and then double that value a few times until the car is able to reach 3000 RPM without overshooting or cogging out.<br/>
+
+10. Now, try increasing the speed to 6000 RPM.<br/>
+a. The motor might cog out and overshoot. If it does, try halving Kp.<br/>
+
+11. Increase the speed to 10,000 RPM and then 20,000 RPM. ​Make sure you hold the car!
+a. If the motor cogs out and overshoots, halve Kp until it doesn’t.<br/>
+b. It may also help to halve Ki if halving Kp doesn’t work.<br/>
+c. If done correctly, the motor should not overshoot to more than 2 times the set<br/>
+RPM. (That is, if the RPM is set to 15,000, its peak value should not exceed 30,000.)
+
+
+
+### LiPo (Lithium Polymer) Battery Safety
+
+LiPO batteries allow your car to run for a long time, but they are not something to play with or joke about. They store a large amount of energy in a small space and can damage your car and cause a fire if used improperly. With this in mind, here are some safety tips for using them with the car.<br/>
+
+- When charging batteries, always monitor them and place them in a fireproof bag on a non-flammable surface clear of any other objects.<br/>
+- Do not leave a LIPO battery connected to the car when you’re not using it. The battery will discharge and its voltage will drop to a level too low to charge it safely again.<br/>
+- Unplug the battery from the car immediately if you notice any popping sounds, bloating of the battery, burning smell, or smoke.<br/>
+- Never short the battery leads.<br/>
+- Do not plug the battery in backwards. This will damage the VESC and power board (and
+likely the Jetson as well) and could cause a short circuit.<br/>
+
+See ​this video​ and ​this video​ for examples of what might happen if you don’t take care of your batteries. Be safe and don’t let these happen to you!<br/>
 
 ### Markdown
 {:.no_toc}
