@@ -457,6 +457,235 @@ Lastly, we will want to install ROS Kinetic. Jetson Hacks on Github has scripts 
 - And here for TX1: ​https://github.com/jetsonhacks/installROSTX1​.
 
 
+## Algorithms
+
+### Wall Following
+
+With our Hokuyo lidar sensor attached to the car, one of the simplest algorithms we can run is a
+wall following algorithm. The basic idea is that the car uses the lidar sensor to measure the
+distance to either the left wall, right wall, or both walls, and tries to maintain a certain distance
+from the wall. Inside the wall_following package under /launch you will see a file called
+wall_following.launch. <br/>
+
+Run the following commands in terminal in order to see the robot do a simple left wall follow in
+Gazebo simulator.
+
+```markdown
+$​ roscore (​ in​ a separate terminal window)
+$​ ​ source​ devel/setup.bash
+$​ roslaunch wall_following wall_following.launch
+```
+Now you should see the Gazebo simulator load with the car placed at the origin in our Levine
+Building 2nd floor world. The car tries to maintain a certain distance of 0.5 meters from the left
+wall, and will continue following it around left turns in a counter-clockwise fashion.
+How is the code organized? From a high level view, data passes in this order:
+pid_error.py -> control.py -> sim_connector.py <br/>
+The main code for the wall_following is under wall_following/scripts/pid_error.py. In this script
+you will find methods for followLeft, followRight, and followCenter. Pid_error.py subscribes to
+the laser scan /scan topic and calls the callback function each time it gets new lidar data
+(around 40 times per second). It uses PID to calculate the error and adjusts the steering angle
+accordingly in order to try to keep its desired trajectory a certain distance away from the wall.
+Pid_error.py then outputs over the /error topic a message type we custom defined called
+pid_input which contains pid_vel and pid_error. Control.py subscribes to the /error topic and
+limits the car’s turning angle to 30 degrees and slows down the car when it is making a turn, or
+speeds up the car when it is going straight. Control.py publishes to the /drive_parameters topic
+using our custom message type called drive_param which contains velocity and angle. Lastly,
+sim_connector.py subscribes to /drive_parameters and basically repackages the velocity and
+steering angle data into the AckermannDriveStamped message type so that it can be read in by
+the simualtor under the /vesc/ackermann_cmd_mux/input/teleop topic. <br/>
+If you run the Gazebo simulator long enough, you’ll notice that when the car reaches around 3⁄4
+of the way through the track, it encounter an opening on the left that leads to a dead-end.Because the car is programmed to just do a wall follow, it gets stuck here. How might we
+alleviate this problem? With hard-coded turn instructions, as described in the next section.
+If you want to try running the wall following in the real world, run these instructions. Depending
+on how wide the hallway is that the car is driving in, you may want to modify the parameters for
+LEFT_DISTANCE and RIGHT_DISTANCE at the top of the pid_error.py file.
+
+```markdown
+$​ roscore (​ in​ a separate terminal window)
+$​ ​ source​ devel/setup.bash
+$​ roslaunch real_world_wall_following wall_following.launch
+```
+
+### Wall Following with Explicit Instructions
+If we do a simple wall follow (left, right, or center), the robot will always make turns at openings it
+sees. But sometimes we may not want the robot to turn into an opening because it dead ends,
+or we just want it to keep going down the hallway. The idea in this section is to give the robot a
+sequence of turn instructions, which it calls sequentially each time it sees an opening. For
+instance, imagine in the Levine World telling the robot to turn [“left”, “left”, “left”, “center”, “left”].
+The “center” would allow it to skip the dead end opening and continue straight with a center wall
+follow instead. Explicit instructions also includes velocity instructions. <br/>
+
+To run the hard-coded turn instructions code in the simulator, do the following in your terminal.
+
+```markdown
+$​ roscore (​ in​ a separate terminal window)
+$​ ​ source​ devel/setup.bash
+$​ roslaunch real_world_wall_following_explicit_instructions.launch
+```
+
+To change the instructions, navigate to the explicit_instructions/instructions.csv file and change
+the values. You will see something that looks like this:
+
+```markdown
+left, 1.5
+left, 2.0
+left, 1.0
+center, 0.5
+left, 2.0
+center, 1.5
+stop, 0.0
+```
+
+The first value is the turn instruction and the second value is the velocity which gets executed
+after making that turn for some duration of time specified in the
+pid_error_explicit_instructions.py file.
+
+
+The core logic is contained in the file wall_following/scripts/pid_error_explicit_instructions.py.
+There are a lot of comments in the code that describe the algorithm. At a high level, the car is
+constantly scanning for an opening by subscribing to the laser scan data . If the car detects an
+opening, then it takes the next instruction off of the turn instruction array and commits to that
+turn instruction for a specified number of seconds. The reason we commit for some seconds is
+that we don’t want the car to mistakenly think it sees a “new” opening midway through a turn,
+and prematurely call the next turn instruction.
+
+
+How does the robot detect an opening? The robot scans to the right (and left as well) between
+some window of degrees. It compares lidar scans sequentially (so for instance, 0 degrees vs
+0.25 degrees) and checks if the distance measured to 0 degrees and the distance measured to
+0.25 degrees has a difference of some distance in meters. If there is a dropoff distance, then we
+know there is an opening.
+
+
+A challenge we ran into is reflections off of metal plates on the doors in Levine Building. The
+robot calculated these as openings because Lidar data showed the points reflecting off the
+metal to be 60 meters away! Our solution was to ignore points that were further than 40 meters
+away because we know that they are metal.
+
+
+You will also notice that in the real_world_wall_following_explicit_planning.launch file, we call a
+dead_mans_switch.py node. This allows us to use the joystick and the car only moves when the
+top right dead mans switch bumper is held down. This is for safety reasons.
+
+If you notice your car is oscillating a lot on straightaways, try turning the kp value down in
+control.py.
+
+
+Wall following with hard coded turns is a tedious algorithm because it requires us to manually
+predict where the car will detect openings before we launch the algorithm. Sometimes the car
+detects openings unpredictably, such as when it passes by an office with glass walls or when it
+goes down the ramp from Levine 3rd floor into Towne. This causes the car to prematurely take
+the next instruction set, which then interferes with the rest of the instruction sets. Hence we
+move on to localization and mapping next in search of a better solution to autonomous driving
+that doesn’t require as much human input and is more robust.
+[Back to Top](#table-of-contents)
+
+
+### Gap-finding in LiDAR scans [Houssam]
+The topic on which lidar information messages are published is the /scan topic.If you ​run the simulator​ and run ​$rostopic info /scan​ , you will see the messages are of
+type std_msgs/LaserScan.
+
+### Scan Matching Odometry [Sheil]
+ROS’ ​ laser_scan_matcher​ package performs scan matching odometry.
+
+#### Installing Packages
+``` Markdown
+$ sudo apt-get install ros-kinetic-amcl
+$ sudo apt-get install ros-kinetic-scan-tools
+```
+
+#### Getting the example launch file
+The f110 repo contains a launch file that demonstrates running the laser_scan_matcher
+on pre-recorded bag data. Copy it into your workspace’s src/ folder, e.g.
+$​ cp -r f110-course-upenn/algorithms/localization src/
+
+
+This folder defines a package, ​ localization​ , which uses ROS’ ​ laser_scan_matcher
+package.
+
+
+Re-source your setup.bash, and you should be able to run
+
+```markdown
+$​ rospack find localization
+```
+
+The majority of the parameters in the ​ laser_scan_matcher​ node are taken from the
+ROS docs on the ​ laser_scan_matcher​ package, available here​ .
+
+
+In order to run the ​ laser_scan_matcher​ on the pre-recorded bag file, execute the
+following lines in your terminal.
+
+
+```markdown
+$ roslaunch localization laser_scan_matcher.launch
+```
+If you don’t want to see RViz, change the use_rviz arg in the launch file to “false”.
+The rostopic printing the pose of the car and covariance matrix is called
+/pose_with_covariance_stamped . You can read about it online.
+[Back to Top](#table-of-contents)
+
+
+### Localization With Hector SLAM
+We use Hector SLAM in order to generate a map given a bag file. First install hector-slam.
+```markdown
+$​ sudo apt-get install ros-kinetic-hector-slam
+```
+Run these following commands in order to reproduce it on your machine.
+```markdown
+$​ roslaunch localization hector_slam.launch
+```
+You will see an Rviz window open up that maps out the Moore Building 2nd floor loop. The
+launch file reads in a bag file which recorded all of the topics. Hector SLAM only needs the
+/scan topic (which contains the laser scans) in order to simultaneously map and localize. Note
+that no odometry data is used, whereas more advanced mapping packages such as Google
+Cartographer have the option to use odometry data and even IMU data.
+
+
+Once the map is completely generated, in a new terminal window run the following in order to
+save the map as a yaml. The last string after “-f” is the name of the map you’d like to save.
+Since in this case we are using the Moore Building bag file, we appropriately name the map
+“moore”.
+
+
+```markdown
+$​ rosrun map_server map_saver -f moore
+```
+Now you will see in your home directory a levine.yaml file and a moore.pgm file. You will need
+both of these. We have already copied and pasted a version of this under
+localization/localization/maps/moore.yaml, as well as its corresponding moore.pgm file.
+Now that you have Hector SLAM working, we can dive a bit more into the details of the
+hector_slam.launch file. At the top of the file you will see that we set the parameter
+/use_sim_time to true because the launch file plays a bag file. In this case, it’s a bag file
+recorded while the car did a single loop around Moore. Whenever we play bag files, it’s
+important to include the --clock argument because it causes ROS to play bag files with
+simulated time synchronized to the bag messages
+(​ https://answers.ros.org/question/12577/when-should-i-need-clock-parameter-on-rosbag-play/​ .
+After the rosbag play instruction in the hector_slam.launch file, you will notice that there is a
+tf2_ros transform node that transforms between base_link to laser. This is very important to
+include or else Hector SLAM will not know where the laser is relative to the center of gravity of
+the car. In this case we use a static transform since the laser does not move relative to the car.
+After the tf2_ros transform instruction in the launch file, you will see a reference to the
+hector_mapping mapping_default.launch file with parameters that specify the names of the
+base_frame, odom_frame, map_size, scan_topic, etc. Then there is a hector_geotiff which is
+used to save the map as a Geotiff file. Lastly, we launch rviz with a specific rviz_cfg (Rviz
+configuration) so that we don’t have to select all the topics we want to visualize every time weopen up Rviz. As a special note of interest, in algorithms below if you see in the launch file that
+there is a --delay of a few seconds added to Rviz, the reason is probably that we need to give
+Rviz time for certain nodes that generally take longer to publish to start publishing, otherwise
+Rviz will get old data.
+
+
+If your hector_slam.launch isn’t working correctly, a good way to debug is to compare your
+rqt_graph and rqt_tf_tree to the ones we have screenshotted below.
+
+<img src = "racecarimages/110806531436070.jpg" alt="hi" class="inline"/>
+Rqt_graph for Hector SLAM generated by running “rosrun rqt_graph rqt_graph”
+
+<img src = "racecarimages/110806531436071.jpg" alt="hi" class="inline"/>
+Rqt_tf_tree generated for Hector SLAM by running “rosrun rqt_tf_tree rqt_tf_tree”
+[Back to Top](#table-of-contents)
+
 
 ### Markdown
 {:.no_toc}
