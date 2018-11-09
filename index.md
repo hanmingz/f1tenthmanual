@@ -302,18 +302,18 @@ If the LIDAR has an Ethernet cable, attach it to the Ethernet port on the Jetson
 
 Pass the 3 round FOCbox wires through the rectangular slot in the plastic chassis, then connect the 3 circular bullet connectors to the three motor wires. (The order in which you connect the wires kinda doesn’t matter (electrically speaking). If you run the car and it goes backwards when it should go forwards, you can swap any two of the three wires.) Connect the 3-wire servo ribbon cable as well, making sure the colors match up. <br/>
 
-<img src="racecarimages/110806531436052.jpg" alt="hi" class="inline"/> <img src="racecarimages/110806531436053.jpg" alt="hi" class="inline"/>
+<img src="racecarimages/110806531436052.jpg" alt="hi" class="inline"/><img src="racecarimages/110806531436053.jpg" alt="hi" class="inline"/>
 
 If your micro USB cable is thin enough, thread it through the rectangular wire slot and around the FOCbox to the USB connector as shown below, or route it around the rear end of the chassis if it isn’t. Plug the cable into the FOCbox’s USB connector and into a free port on your USB hub. Tie the USB cable up using a cable tie, and tuck all of the wires underneath the chassis. You can also use this time to plug in the LIDAR (if it is USB), the external Wi-FI adapter, and the receiver for the F710 gamepad.
 
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+<img src="racecarimages/110806531436054.jpg" alt="hi" class="inline"/><img src="racecarimages/110806531436055.jpg" alt="hi" class="inline"/><img src="racecarimages/110806531436056.jpg" alt="hi" class="inline"/>
 
 
 ### Connecting the Car to the Battery
 
 Connect the battery to the FOCbox using the battery connector. ​Make sure that red is aligned with red and black is aligned with black - otherwise things will get hot and dicey. ​Then connect the FOCbox to the power board using the white port shown in the picture below. <br/>
 
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+<img src="racecarimages/110806531436057.jpg" alt="hi" class="inline"/>
 
 At this point, your car should be assembled, the Jetson lights should flash when you flip the power switch, and the car is ready to run!  <br/>
 
@@ -342,28 +342,32 @@ following his instructions for installation.<br/>
 to the VESC.
 - If you get the error “Device not found”, try running the command ​lsusb​ in a
 terminal. You should see an entry for “STMicroelectronics STMF407” or something similar. If you don’t, try unplugging and plugging in the USB cable on both ends. If the problem doesn’t go away, try rebooting the Jetson.<br/>
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+<img src="racecarimages/110806531436058.jpg" alt="hi" class="inline"/>
+
 - If you are using a VESC 4.12 (including a FOCbox), ensure the firmware version is 2.18.
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+<img src="racecarimages/110806531436059.jpg" alt="hi" class="inline"/>
 
 5. Disable keyboard control by clicking the “KB Ctrl” button at the lower right. This will prevent your keyboard’s arrow keys from controlling the motor and is important to prevent damage to the car from it moving unexpectedly.
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+<img src="racecarimages/110806531436060.jpg" alt="hi" class="inline"/>
 
 6. Start plotting the realtime RPM data by clicking the “Realtime Data” tab, and checking the “Activate sampling” checkbox at the bottom left of the window. Click the “RPM” tab above the graph.
 - We will keep referring to this plot of the motor’s RPM as we tune the PID gains. Out goal is to get the motor to spin up as quickly as possible when we set it to a certain RPM. We also don’t want the motor to cog (not spin) or overshoot the target speed if possible.
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+<img src="racecarimages/110806531436061.jpg" alt="hi" class="inline"/>
 
 7. Test the motor first (without PID speed control) by setting the “Duty Cycle” to 0.20. This will spin the motor up to approximately 16,000 - 17,000 RPM. Let this run for a few seconds, and then press the “Release Motor” button at the bottom right to stop it.
 - Observe the RPM graph. If the motor is spinning backwards (the RPM is negative), try reversing two of the connections from the VESC to the motor. (It doesn’t matter which wires you reverse.)
 - If the wheels don’t spin and the motor makes no noise, check to make sure all connections to the motor are tight.
 - If the wheels don’t spin and the motor does, ensure the motor’s gear is attached correctly to the gearbox at the back of the car. Spin both front wheels with your hand to verify that the gear is making good contact. You should feel some resistance when turning the wheels.
 - If the motor doesn’t spin and makes a humming or hissing sound, you might need to replace the motor. If this doesn’t work, try replacing the VESC.
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+<img src="racecarimages/110806531436062.jpg" alt="hi" class="inline"/>
 
 8. Click the “Motor Configuration” tab at the top and the “Advanced” tab on the left. Set Ki and Kd to 0.00000, and set Kp to 0.00001. Click the “Write Configuration” button at the bottom, go back to the data plotting tab and run the car at 3000 RPM.
 - You will notice that the car won’t even make it close, as it only goes up to around 1200 RPM. (High steady-state error.)
 - Try turning Kp up to 0.00002, 0.00004, and 0.00008. (Don’t forget to write the configuration each time.) The motor will start to cog out at higher Kp values.
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+<img src="racecarimages/110806531436063.jpg" alt="hi" class="inline"/>
 
 9. Set Kp back to 0.00002, and set Ki to 0.00002, and run the car at 3000 RPM again. Notice how the car slowly reaches the 3000 RPM target. (This is because adding Ki helps to eliminate steady-state error.)
 - Keep increasing Ki; set it to 0.00005 and then double that value a few times until the car is able to reach 3000 RPM without overshooting or cogging out.<br/>
@@ -407,7 +411,8 @@ Will we support them? Nope.<b/r>
 ## Install ROS
 
 Go to ROS.org and follow the instructions there to install the version of ROS referenced above.
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+<img src="racecarimages/110806531436064.jpg" alt="hi" class="inline"/>
 
 ## On Jetson
 
