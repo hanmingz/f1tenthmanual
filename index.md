@@ -434,13 +434,16 @@ Connect the Jetson to your host PC via the USB micro-B plug Plug to power<b/r>
 
 The Jetson should power on. If it doesn’t, push the ON button. Login: nvidia
 Password: nvidia<b/r>
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+
+<img src="racecarimages/110806531436064.jpg" alt="hi" class="inline"/>
+
 
 ### Install Linux
 Run
 $ cat NVIDIA-INSTALLER/README.txt
 
 And run the instructions that are in that file to install Ubuntu Linux. Note that TX1 comes with 14.04 LTS and TX2 comes with 16.04 LTS. There may be an additional step for TX1 if the course is using 16.04 LTS.<b/r>
+
 
 ### Flash the Jetpack
 NOTE: you will need some 14GB of free space on the host computer for this step.<b/r>
@@ -451,6 +454,8 @@ To do this, we need a host computer that is running Linux 14.04 (it seems 16.04 
 
 What if you don’t have a Linux 14.04 computer laying around? (most of us don’t). See ​Appendix A​ of this doc for an amazing set of instructions by Klein Yuan which details how to use a virtual machine with a Mac to do the flash. Steps would probably work similarly for a PC that is running Virtual Box.<b/r>
 
+
+
 ### Re-flash the Orbitty
 
 After the Jetson has been flashed with Jetpack, we will actually need to re-flash it with the Connect Tech Orbitty firmware. Otherwise on the TX2 there can be issues with the USB 3.0 not working on the Orbitty carrier board. A great link to instructions is from NVIDIA-Jetson: https://github.com/NVIDIA-Jetson/jetson-trashformers/wiki/JetsonTM-Flashing-and-Setup-Guide-f or-a-Connect-Tech-Carrier-Board​. ​Note that each time you flash all of the files<b/r> will essentially be deleted from your Jetson​. So make sure to save any work you may have already done and upload it.
@@ -460,6 +465,55 @@ After the Jetson has been flashed with Jetpack, we will actually need to re-flas
 Lastly, we will want to install ROS Kinetic. Jetson Hacks on Github has scripts to install ROS Kinetic.
 - Here for TX2: ​https://github.com/jetsonhacks/installROSTX2​.
 - And here for TX1: ​https://github.com/jetsonhacks/installROSTX1​.
+
+### Wireless network setup (Penn ESE 680 only)
+
+We could log into the Jetson using a monitor, keyboard, and mouse, but what about when we’re driving the car? Fortunately, the Jetson has Wi-Fi capability and can be accessed remotely via an SSH session.
+Throughout this tutorial, you will be asked to configure the Jetson’s and your laptop’s network settings. Make sure to get these right! Using the wrong IP address may lead to conflicts with another classmate, meaning neither of you will be able to connect.<b/r>
+
+## Connecting the car to the access point
+
+1. Click the wireless icon at the top right of the screen and click the f110 network to start connecting to it. You will be prompted for a Wi-Fi password for the network: enter the password the TAs give you.
+- It’s normal for the wireless icon to appear as if the Jetson is not connected immediately to the network since we still need to assign it an IP address.
+2. In the same menu, click “Edit Connections.” In the pop-up value that appears, highlight the f110 network and click the Edit button.
+3. Navigate to the IPv4 Settings tab and, under “Addresses,”, click the Add button.
+- In the “Address” field, type ​192.168.2.xxx​, where ​xxx​ is your team’s number
+plus 200. (For example, if I was on team 2, I would type ​192.168.2.202​.)
+- In the “Netmask” field, type ​255.255.255.0​.
+- In the “Gateway” field, type ​192.168.2.1​.
+4. In the “DNS servers” field, type the same entry you used for the default gateway: 192.168.2.1​. (The router already has DNS servers configured in its internal settings.)
+5. You should now be connected. Try opening Chromium and connecting to a site like Google, or using the ​ping​ utility from a terminal to test internet connectivity.
+- If you experience signal strength issues, try moving closer to the router.
+- If you can’t see the router at all, ensure that your Wi-Fi antennas are securely
+connected to the Jetson. You can also try toggling the adapter on and off via the
+“Enable Wi-Fi” option in the wireless settings menu.
+- If you are connected to the router but can’t reach the internet, you may need to
+set up the Hokuyo to not allow routing through it.
+  
+## Connecting your computer to the access point
+
+Important Note​: when connecting your laptop to the router, use an IP address of the form 192.168.2.xxx​, where ​xxx​ is your team’s number multiplied by 4, added to 100, and then added to a number between 0 and 3 according to the alphabetical order of your last name in your team. For example, if I am on team 2, my name is Jack Harkins, and my teammates are Chris Kao, Sheil Sarda, and Houssam Abbas, I would add 1 since my last name (Harkins) comes second, making my final IP address ​192.168.2.209​.
+Linux<b/r>
+
+If you’re running Linux in a dual-boot configuration or as a standalone OS, the steps to connect are the same as those for the Jetson above; just make sure you use the correct IP address for your laptop instead of the one for the Jetson.
+If you’re running Linux in a VM, connect your ​host​ computer to the router using the instructions below. Depending on which VM software you have and the default VM configuration, you may also need to set its network adapter configuration to NAT mode. This ensures your VM will share the wireless connection with your host OS instead of controlling the adapter itself.
+
+# Windows
+These instructions are for Windows 10, but they should be easily replicable on older Windows versions as well.
+1. Click the wireless icon at the bottom right of the taskbar, select the f110 network, and click the Connect button. Enter the network password when prompted.
+2. Right-click the same wireless icon and click “Open Network & Internet settings.” Click “Change connection properties” in the window that pops up.
+3. Scroll down, and under “IP settings,” hit the Edit button. Change “Automatic (DHCP)” to manual, click the IPv4 slider, and enter the IP address, gateway, and DNS server as described previously.
+- “Subnet prefix” should be set to ​24​, not ​255.255.255.0​ as you did with the Jetson.
+- You can leave “Alternate DNS” blank.
+- Remember to use the correct IP address for your computer; it should be different
+from the one you used on the car.)
+- If successful, the yellow exclamation mark on the wireless icon should go away. You can
+test connectivity using the ​ping​ utility included with the Windows command prompt.
+
+# Mac OS
+TODO
+
+
 
 
 ## Algorithms
