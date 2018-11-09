@@ -295,7 +295,7 @@ Attach the LIDAR's power cable to a free 12V terminal block on the power board. 
 
 If the LIDAR has an Ethernet cable, attach it to the Ethernet port on the Jetson. If it has a USB cable, plug it into the USB hub. Route any excess cables behind the USB hubs as shown. <br/>
 
-<img src="Connecting the LIDAR.png" alt="hi" class="inline"/>
+<img src="racecarimages/110806531436051.jpg" alt="hi" class="inline"/>
 
 
 ### Connecting the FOCbox
