@@ -498,7 +498,7 @@ Linux<b/r>
 If you’re running Linux in a dual-boot configuration or as a standalone OS, the steps to connect are the same as those for the Jetson above; just make sure you use the correct IP address for your laptop instead of the one for the Jetson.
 If you’re running Linux in a VM, connect your ​host​ computer to the router using the instructions below. Depending on which VM software you have and the default VM configuration, you may also need to set its network adapter configuration to NAT mode. This ensures your VM will share the wireless connection with your host OS instead of controlling the adapter itself.
 
-# Windows
+### Windows
 These instructions are for Windows 10, but they should be easily replicable on older Windows versions as well.
 1. Click the wireless icon at the bottom right of the taskbar, select the f110 network, and click the Connect button. Enter the network password when prompted.
 2. Right-click the same wireless icon and click “Open Network & Internet settings.” Click “Change connection properties” in the window that pops up.
@@ -510,8 +510,59 @@ from the one you used on the car.)
 - If successful, the yellow exclamation mark on the wireless icon should go away. You can
 test connectivity using the ​ping​ utility included with the Windows command prompt.
 
-# Mac OS
+### Mac OS
 TODO
+
+### SSHiing into the car
+The ​ssh​ utility is useful for gaining terminal access to your car when you don’t have a monitor around and when you don’t need to do visualization (e.g. via ​rviz​). Using this utility will give you the ability to edit and run your ROS code remotely and is especially useful when you want to rapidly develop and test new algorithms without the hassle a monitor can bring.
+
+Before doing this, make sure both your laptop and car are connected to the f110 network as described ​here​.
+1. Open a terminal on your laptop and type $ ​ssh <Jetson username>@<your car’s IP address​ to connect to the car. You will be prompted for your Jetson login password; type this in as well.
+- The first time you SSH into the car, you will probably be told that the “authenticity of the host can’t be established.” Just type in “yes” and the dialog will not appear again.
+2. If successful, you should see a prompt similar to ​ubuntu@tegra-ubuntu:~$​, which indicates that you’re now connected to the car’s terminal. Try starting ​roscore​ and running some ROS scripts. Don’t forget to source your working directory’s setup file beforehand.
+3. Don’t forget that while you’re SSH’ed into the car, you’re running over the wireless network. Try not to get too far away from the car so you don’t accidentally get logged out, and make sure you ​save your work often​.
+
+### Setting up Wireless Hot Spot on Jetson
+As you begin to test on larger tracks, you may find a need to have a direct connection to your car, so as to not have to rely on the car being within a certain distance of your router. The solution here is to set up wireless hot spot on the Jetson. It is extremely easy.
+
+Go to System Settings on your Jetson. Then Network.
+
+<img src="racecarimages/110806531436065.jpg" alt="hi" class="inline"/>
+
+On the bottom center of the pop-up window for the network, click on “Use as Hotspot...” You will no longer have internet connection because your wireless antennas will now be used as a hot spot rather than to connect to the previous Wi-Fi connection that you were on.
+
+Note that if you plan on using the wireless hotspot feature often, you will want it to boot up on startup. To do this, open up Network Connections, under Wi-Fi select Hotspot and Edit.
+
+<img src="racecarimages/110806531436066.jpg" alt="hi" class="inline"/>
+
+Under General click on “Automatically connect to this network when available”.
+
+On your phone, tablet, or laptop you can now connect directly to this Hotspot, and you can use it with VNC viewer as well if you have set up a VNC server. The default IP address for Hotspot on the Jetson is 10.42.0.1.
+
+### Setting Up VNC Server on Jetson
+(This is not essential, just useful if you feel strongly about having a GUI-type of desktop)
+
+Setting up a VNC server on the Jetson allows you to control the Jetson remotely. Why is this beneficial? When the car is running in the real world we won’t be able to connect the Jetson to an HDMI display. The traditional solution has been to ssh into the Jetson to see the directories, but what if we want to see graphical programs such as Rviz? (in order to see laser scans in live time and camera feeds). Or what if we want to be able to see multiple terminal windows open on the Jetson? A VNC server does this trick.
+
+Here are sequential instructions to install x11vnc and set it up so it loads every time at boot up, taken from ​http://c-nergy.be/blog/?p=10426​. The article linked contains a link to a shell file to launch all these instructions. We have just pasted it here in case the original article or its link become inaccessible.
+
+``` Markdown
+#​ ​################################################################## #​ Script Name : vnc-startup.sh
+#​ Description : Perform an automated install of X11Vnc
+#​ Configure it to run at startup of the machine
+#​ Date : Feb 2016
+#​ Written by : Griffon
+#​ Web Site :http://www.c-nergy.be - http://www.c-nergy.be/blog
+#​ Version : 1.0
+#
+#​ Disclaimer : Script provided AS IS. Use it at your own risk.... #
+#​ ​#################################################################
+#​ Step 1 - Install X11VNC
+#​ ​################################################################# sudo apt-get install x11vnc -y
+#​ Step 2 - Specify Password to be used ​for​ VNC Connection
+#​ ​#################################################################
+sudo x11vnc -storepasswd /etc/x11vnc.pass
+```
 
 
 
