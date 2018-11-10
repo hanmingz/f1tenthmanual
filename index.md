@@ -562,10 +562,128 @@ Here are sequential instructions to install x11vnc and set it up so it loads eve
 #​ Step 2 - Specify Password to be used ​for​ VNC Connection
 #​ ​#################################################################
 sudo x11vnc -storepasswd /etc/x11vnc.pass
+
+#​ Step 3 - Create the Service Unit File
+#​ ​#################################################################
+cat > /lib/systemd/system/x11vnc.service << EOF
+[Unit]
+Description=Start x11vnc at startup.
+After=multi-user.target
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat
+-rfbauth /etc/x11vnc.pass -rfbport 5900 -shared
+[Install]
+WantedBy=multi-user.target
+EOF
+#​ Step 4 -Configure the Service
+#​ ​################################################################
+echo "Configure Services"
+sudo systemctl enable x11vnc.service
+sudo systemctl daemon-reload
+sleep  5s
+sudo shutdown -r now
+```
+Note that if you want to change the port that the VNC server lives on, then simply change 5900 to some other number. The article states that if 5900 is used on the Jetson, then the VNC server will automatically forward through 5901. And if that is taken, then 5902, and so on and so forth.
+
+To connect to your VNC server, use a VNC viewer. A free one that works pretty well is Real VNC’s VNC Viewer (​https://www.realvnc.com/en/connect/download/viewer/​). If you are on a mac, you can also use the included Screen Sharing app. Connect by typing into the url [jetson’s ip address]:[port number]. So for instance, if the jetson is connected on ip address 192.168.2.9 with port number 5900, then type in 192.168.2.9:5900.
+
+Lastly, you will want to use an HDMI emulator, like this one (​https://www.amazon.com/gp/product/B00JKFTYA8​), in order to trick the Jetson to thinking that a display is connected so that it will display at higher resolutions by running the GPU. Otherwise, if the Jetson is booted up with nothing connected into the HDMI port, the VNC server will default to a really low resolution, like 640 x 480. There is probably also an OS way to configure this, but it’s a lot easier to buy a $10 piece that solves the issue by hardware.
+
+Note that there are existing softwares to be able to set up VNC servers as well, such as Real VNC. However, we found that these could not install on the Jetson TX2 because it uses an AARM64 processor. That is why we had to use x11vnc.
+
+
+### Hokuyo 10LX ethernet connection setup
+TODO: Add pictures and snippets.
+
+In order to utilize the 10LX you must first configure the eth0 network. From the factory the 10LX is assigned the following ip: 192.168.0.10. Note that the lidar is on subnet 0.
+
+First create a new wired connection.
+
+In the ipv4 tab add a route such that the eth0 port on the Jetson is assigned ip address 192.168.0.15, the subnet mask is 255.255.255.0, and the gateway is 192.168.0.1. Call the connection Hokuyo. Save the connection and close the network configuration GUI.
+
+When you plug in the 10LX make sure that the Hokuyo connection is selected. If everything is configured properly you should now be able to ping 192.168.0.1.
+
+In the racecar config folder under ‘lidar_node’ set the following parameter: ‘ip_address: 192.168.0.10’. In addition in the sensors.launch.xml change the argument for the lidar launch from ‘hokuyo_node’ to ‘urg_node’ do the same thing for the node_type parameter.
+
+
+### Working directory setup
+
+On your host computer (e.g., your laptop), setup your working directory (the F1/10th car and simulator) by following these steps.
+
+Clone the following repository into a folder on your computer.
+
+``` Markdown
+ $​ ​cd​ ~/sandbox (or whatever folder you want to work ​in​)
+$​ git ​clone​ https://github.com/mlab-upenn/f110-upenn-course.git
 ```
 
+Create a workspace folder if you haven’t already, here called f110_ws, and copy the simulator folder into it:
+
+``` Markdown
+ $​ mkdir -p f110_ws/src
+$​ cp -r f110-upenn-course f110_ws/src/
+```
+You will need to install these with apt-get in order for the car and Gazebo simulator to work.
 
 
+``` Markdown
+$​ sudo apt-get update
+$​ sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-gazebo-ros-control ros-kinetic-ackermann-msgs ros-kinetic-joy ros-kinetic-driver-base
+```
+Make all the Python scripts executable (by default they are set to non-executable when cloned from Github).
+
+
+``` Markdown
+ $​ ​cd​ f110_ws
+ $​ find . -name “*.py” -exec chmod +x {} \;
+```
+Move to your workspace folder and compile the code (catkin_make does more than code compilation - see online reference).
+
+``` Markdown
+$​ catkin_make
+```
+Finally, source your working directory into your shell using
+``` Markdown
+$​ source devel/setup.bash
+```
+Congratulations! Your working directory is all set up. Now if you examine the contents of your workspace, you will see 3 folders (In the ROS world we call them meta-packages since they contain packages): algorithms, simulator, and system. Algorithms contains the brains of the car which run high level algorithms, such as wall following, pure pursuit, localization. Simulator contains racecar-simulator which is based off of MIT Racecar’s repository (​https://github.com/mit-racecar/racecar-simulator​) and includes some new worlds such as Levine 2nd floor loop. Simulator also contains f1_10_sim which contains some message types useful for passing drive parameters data from the algorithm nodes to the VESC nodes that drive the car. Lastly, System contains code from MIT Racecar that the car would not be able to work without. For instance, System contains ackermann_msgs (for Ackermann steering), racecar (which contains parameters for max speed, sensor IP addresses, and teleoperation), serial (for USB serial communication with VESC), and vesc (written by MIT for VESC to work with the racecar).
+
+
+## udev​ rules setup
+When you connect the VESC and LIDAR to the Jetson, the operating system will assign them device names of the form ​/dev/ttyACMx​, where x is a number that depends on the order in which they were plugged in. For example, if you plug in the LIDAR before you plug in the VESC, the LIDAR will be assigned the name ​/dev/ttyACM0​, and the VESC will be assigned /dev/ttyACM1​. This is a problem, as the car’s ROS configuration scripts need to know which device names the LIDAR and VESC are assigned, and these can vary every time we reboot the Jetson, depending on the order in which the devices are initialized.
+Fortunately, Linux has a utility named ​udev​ that allows us to assign each device a “virtual” name based on its vendor and product IDs. For example, if we plug a USB device in and its vendor ID matches the ID for Hokuyo laser scanners (15d1), ​udev​ could assign the device the name ​/dev/sensors/hokuyo​ instead of the more generic ​/dev/ttyACMx​. This allows our configuration scripts to refer to things like ​/dev/sensors/hokuyo​ and /dev/sensors/vesc​, which do not depend on the order in which the devices were initialized. We will use udev to assign persistent device names to the LIDAR, VESC, and joypad by creating three configuration files (“rules”) in the directory ​/etc/udev/rules.d​.
+
+First, as root, open ​/etc/udev/rules.d/99-hokuyo.rules​ in a text editor to create a new rules file for the Hokuyo. Copy the following rule exactly as it appears below and save it:
+
+``` Markdown
+ KERNEL=="ttyACM[0-9]*", ACTION=="add", ATTRS{idVendor}=="15d1", 
+ MODE="0666", GROUP="dialout", SYMLINK+="sensors/hokuyo"
+```
+Next, open ​/etc/udev/rules.d/99-vesc.rules​ and copy in the following rule for the VESC:
+
+``` Markdown
+KERNEL=="ttyACM[0-9]*", ACTION=="add", ATTRS{idVendor}=="0483", 
+ATTRS{idProduct}=="5740", MODE="0666", GROUP="dialout", 
+SYMLINK+="sensors/vesc"
+```
+Then open ​/etc/udev/rules.d/99-joypad-f710.rules​ and add this rule for the joypad:
+
+
+``` Markdown
+ KERNEL=="js[0-9]*", ACTION=="add", ATTRS{idVendor}=="046d", 
+ ATTRS{idProduct}=="c219", SYMLINK+="input/joypad-f710"
+```
+Finally, trigger (activate) the rules by running ​$ sudo ​udevadm control --reload-rules && udevadm trigger​. Reboot your system, and you should find three new devices by running
+>> ls /dev
+/dev/sensors/hokuyo​, ​/dev/sensors/vesc​, and ​/dev/input/joypad-f710​.
+
+If you want to add additional devices and don’t know their vendor or product IDs, you can use the command
+
+``` Markdown
+$ sudo ​udevadm info --name=<your_device_name> --attribute-walk
+``` 
+making sure to replace ​<your_device_name>​ with the name of your device (e.g. ttyACM0 if that’s what the OS assigned it. The Unix utility ​dmesg​ can help you find that). The topmost entry will be the entry for your device; lower entries are for the device’s parents.
 
 ## Algorithms
 
