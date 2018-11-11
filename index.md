@@ -1804,12 +1804,12 @@ Let’s get started!
 medium heat and apply a thin coating of solder to each pad. You’ll know you’ve applied
 enough when the entire pad is covered and the solder makes a very slight bulge upward.
 
-<img src = "racecarimages/110806531436089.jpg" width = 150/><img src = "racecarimages/110806531436090.jpg" width = 150/>
+<img src = "racecarimages/110806531436089.jpg" width = 150/> <img src = "racecarimages/110806531436090.jpg" width = 150/>
 
 2. Flux and apply a similar coating of solder to the corresponding 7 pads on the power
 board. Again, make sure the entire pad is covered in a thin layer of solder.
 
-<img src = "racecarimages/110806531436091.jpg" width = 100/><img src = "racecarimages/110806531436092.jpg" width = 100/>
+<img src = "racecarimages/110806531436091.jpg" width = 100/> <img src = "racecarimages/110806531436092.jpg" width = 100/> 
 <img src = "racecarimages/110806531436093.jpg" width = 100/>
 
 3. Place the protection module on the power board (pay careful attention to orientation) and
@@ -1824,7 +1824,7 @@ fuses to the solder on the board. This helps to avoid cold joints.
 b. Don’t apply so much solder as to make it bulge above the plane of the protection
 module.
 
-<img src = "racecarimages/110806531436094.jpg" width = 150/><img src = "racecarimages/110806531436095.jpg" width = 150/>
+<img src = "racecarimages/110806531436094.jpg" width = 150/> <img src = "racecarimages/110806531436095.jpg" width = 150/>
 
 [Back to Top](#table-of-contents)
 
@@ -1844,7 +1844,7 @@ can also apply more solder to the pad and suck it up with the solder sucker unti
 sticks to the pad; just make sure that the solder isn’t in a large ball when you’re
 finished.
 
-<img src = "racecarimages/110806531436096.jpg" width = 150/><img src = "racecarimages/110806531436097.jpg" width = 150/>
+<img src = "racecarimages/110806531436096.jpg" width = 150/> <img src = "racecarimages/110806531436097.jpg" width = 150/>
 
 [Back to Top](#table-of-contents)
 
@@ -1880,7 +1880,7 @@ board and attach to the opposite pad since it improves the mechanical strength
 and electrical conductivity of the joint, but it isn’t strictly necessary for a good
 connection. Don’t sweat it if you can’t get it.
 
-<img src = "racecarimages/110806531436099.jpg" width = 150/><img src = "racecarimages/110806531436100.jpg" width = 150/>
+<img src = "racecarimages/110806531436099.jpg" width = 150/> <img src = "racecarimages/110806531436100.jpg" width = 150/>
 
 10. Repeat step 7 to solder X1 and X9 to the power board. You shouldn’t need to use the
 helping hand at this point since the terminal blocks on the other side of the board will
@@ -1889,6 +1889,8 @@ naturally balance the board.
 To avoid repeating directions, the following steps will assume you’ve properly fluxed the pins
 and pads of each component before soldering them. This step is ​**critical​**; make sure you do it
 every time!
+
+[Back to Top](#table-of-contents)
 
 ### Small Slider Switches (SW1, SW2), Battery Power Jack (U$10), and Remaining Small Capacitors (C3, C4, C5, and C6)
 
@@ -1904,6 +1906,40 @@ b. Don’t apply too much solder to these switches since the plastic in them can
 if heated for an extended period of time. Stop applying solder once you notice it
 sinking to the opposite side.
 
+<img src = "racecarimages/110806531436101.jpg" width = 150/> <img src = "racecarimages/110806531436102.jpg" width = 150/>
+
+2. Solder the battery power jack similarly to how you soldered terminal blocks X2 - X4.
+You’ll want to first start with the pins separated from the ground plane and then solder
+the GND pin connected to the ground plane, using high heat if necessary.
+
+The battery jack should stay in place by friction alone, so you shouldn’t need a
+helping hand or alligator clip.
+
+<img src = "racecarimages/110806531436103.jpg" width = 150/> <img src = "racecarimages/110806531436104.jpg" width = 150/>
+
+13. Grab three 100nF capacitors and one 330nF capacitor. Solder the remaining small
+capacitors according to step 9. For C3 and C4, solder the ground pin last and use higher
+heat if necessary.
+
+Make sure you place the capacitors into the correct pads on the board. It’s easy
+to get confused when you flip the board over, especially for C5 and C6. Also,
+note that C5 is 330nF and not 100nF.
+
+<img src = "racecarimages/110806531436105.jpg" width = 150/> <img src = "racecarimages/110806531436106.jpg" width = 150/>
+
+[Back to Top](#table-of-contents)
+
+### Resistors (R1, R2, R3) and Headers (U$1, CON1, CON2, CON3, CON4)
+
+14. Solder the resistors using the same technique you used for the small capacitors. Cut the
+excess leads off the bottom of the board when you’re finished.
+
+<img src = "racecarimages/110806531436107.jpg" alt="hi" class="inline"/>
+
+15. Solder the four 3-pin male headers first. Use a long female header to align the male
+headers while you solder.
+
+<img src = "racecarimages/110806531436108.jpg" width = 150/> <img src = "racecarimages/110806531436109.jpg" width = 150/>
 
 
 [Back to Top](#table-of-contents)
