@@ -1623,6 +1623,291 @@ All in all, TEB is just really cool!
 [Back to Top](#table-of-contents)
 
 
+## Appendix A: Flashing Jetpack via a VM
+
+(From ​ https://github.com/KleinYuan/tx2-flash​ )
+
+### Prerequisites
+- A mac desktop connected with Wi-Fi
+- macOS Sierra 10.12.5 + (Not necessary this version, but this is what I tested)
+- access to internet and power (You can't do this locally)
+- NVIDIA TX2
+- A monitor, HDMI Cable, Ethernet Cable, one Keyboard (USB plugged in), one
+mouse (preferrable), one USB hub (preferrable)
+
+[Back to Top](#table-of-contents)
+
+### Install Virtual Box and Extensions
+
+1.1 Install Virtual Box
+Download Virtual Box for Mac from ​ here​ and install it first;
+Then download Virtual Box extension ​ here​ and install it;
+Extension is needed to enable USB-2/USB-3 connection/communications between any
+physical USB device and the virtual machine.
+1.2 Spin up an Ubuntu VM
+Download Ubuntu 14.04 iso image from ​ here​ .
+(Ubuntu 16.04 may also work, even I haven't tried it on my own. But here's a ​ proof​ that
+Ubuntu 16.04 should also work.)
+Then, create an ubuntu machine with following settings:
+● Storage is larger than 50GB
+● Go to Settings --> Network --> Adapter 1, change ​ Attached to​ to ​ Bridged Adapter​ ,
+and name to whatever under Wi-Fi
+● Go to Settings --> Ports --> USB, ensure E
+nable USB Controller​ is under U
+SB 3.0
+(xHCI) Controller
+Last, load the image that you just downloaded and spin up an VM.1.3 Download NVIDIA JetPack
+In the VM, open firefox browser and go to NVIDIA's official ​ website​ and join them as a
+member so that you can download the JetPack.
+In my case, I downloaded JetPack 3.1 (includes TensorRT2.1, cuDNN 6.0, VisionWorks
+1.6, CUDA 8.0, Multimedia API, L4T, Development tools).
+You are expected to find a file called ​ JetPack-L4T-3.1-linux-x64.run​ under ​ Downloads
+folder.
+1.4 Install JetPack
+Open a terminal and navigate to Downloads folder, then change .run file as executable:
+```markdown
+cd
+cd ~/Downloads
+chmod +x ./JetPack-L4T-3.1-linux-x64.run
+```
+Then, run the .run file:
+```markdown
+./JetPack-L4T-3.1-linux-x64.run
+```
+Then just follow all the steps (basically from 2 to 12 without 9 in ​ here​ ): choose TX2, L4T
+3.1, full-install, then it will take a while to downloads all the dependencies and then a
+window will pop up to ask you to confirm the installation.
+
+And when download/installation on host machine is finished, you just click all the way to
+pop up a terminal says :
+
+<img src = "racecarimages/110806531436087.jpg" alt="hi" class="inline"/>
+
+And now, here's the tricky part:
+- Plug in the USB with a USB hub, then connect a mouse, keyboard to TX2
+- Connect via HDMI (HDMI-HDMI, no VGA adapters ok?) between TX2 and
+monitor so that you can see what's going on
+- Follow the descriptions, to power off TX2, connect to host-machine, power on,
+press ..... (just follow what they said), but just hold on Press Enter on host
+machine
+- Before you Press Enter on host machine's terminal, open settings of your VM,
+and go to Settings --> Ports --> USB, and click ​ Add new USB filters with all .....
+(blahblahblah)​ , then add N
+VIDIA Corp. APX
+- Then, go to VM, click bottom right corner the button with shape an USB (pbbly
+forth one), and select NVIDIA Corp. APX​ , (it would be great to unplug any other
+USB devices from your Mac)
+- Last, go back to your VM, do Press Enter​ on the terminal
+
+And, go and grab a coffee, it will take around 30 min to complete the entire process.
+
+1.5 Validation Flash
+
+Go to TX2, open terminal:
+```markdown
+# Validate NVCC
+nvcc -V
+# Validate cuda
+ls /usr/local | grep cuda
+# Run example
+# You can find this easily online, just google it.
+```
+
+Ta Da!
+
+[Back to Top](#table-of-contents)
+
+## Appendix B: Shared folders between Host and VM
+If you don’t have a host computer running Ubuntu, you may do most of the above using a Virtual
+Machine (VM). If so, it is useful to setup a shared folder between the ​ host ​ (your default OS on
+your laptop) and the ​ guest ​ (Ubuntu running in the VM).
+The following are for an Ubuntu 16.04 guest on Virtualbox, with the host a Mac OS X El Capitan
+(other Mac OSes should work too).
+We assume you have already installed Virtualbox on your host, and installed Ubuntu 16.04 on it.
+More detailed instructions exist online, this is one way of doing it.
+On your host, create the folder you wish to share. We’ll call it sfVM and assume it lives at
+~/sfVM.
+Start VirtualBox.
+Make sure the VM is not on (shut it down if it is).
+Select the Ubuntu VM.
+Click Settings -> Shared Folders -> Click the ‘+’ sign -> browse to sfVM which you created
+above, and check “Auto-mount” and “Make permanent”.
+Start the VM
+Install the Guest Additions: in the VBox menu, click Devices -> Install Guest Additions -> ... ->
+Run Software
+Mount the shared folder manually by running:
+
+```markdown
+$​ mkdir ~/guest_sfVM (or whatever you want to call it)
+$​ id
+uid=1000(houssam) gid=1000(houssam)
+$​ sudo mount -t vboxsf -o uid=1000,gid=1000 sfVM ~/guest_sfVM
+```
+
+To check that this was successful, on your host, put some file in the shared folder ~/sfVM.
+Then in your guest, you should see that file appear in ~/guest_sfVM
+
+[Back to Top](#table-of-contents)
+
+## Appendix C: Soldering the Power Board
+The power board provides a stable 12V power source for the Jetson, LiDAR, and other
+peripherals. This is necessary since the battery’s voltage will drop as it is used. Please note that
+the power board does ​ not​ charge the battery; for this, you will need a Traxxas EZ-Peak charger,
+as listed in the F110 BOM.
+
+Note: the LiPO protection module and some green connectors are currently unused and are legacy from previous iterations of F1/10
+that used the Teensy microcontroller as motor driver.
+
+Make sure you have the following equipment ready before you begin:
+● Soldering iron or station with adjustable temperature (recommended: ​ Weller WES51​ or
+Hakko FX-888D​ )
+● Lead-free solder wire
+● Brass tip cleaner
+● Solder sucker
+● Liquid flux pen
+● “Helping hands” with alligator clips
+● Power supply for testing the board
+● Optional: Isopropyl alcohol and toothbrush for cleaning the board
+
+In addition, you’ll need to have a blank power board ready along with the components from the
+power board BOM​ . Follow the ordering instructions above to obtain a blank PCB.
+Some other notes and tips before we begin:
+● Apply flux to ​ every pad​ and ​ every pin​ of every component before soldering it! This is
+especially important since this PCB has large ground planes that make it difficult to
+solder if the surfaces aren’t cleaned beforehand.
+● Soldering requires patience and practice. Don’t do it on a whim, or if you’re tired or
+hungry. If you’ve never soldered before, practice on a perfboard or scrap PCB first, or
+get help from a friend. Expect to spend up to 3 hours soldering this board.
+● If you find that the iron isn’t melting solder well, try cleaning it using the brass tip cleaner
+and applying a thin coating of solder to the tip (known as “tinning”).
+● Don’t leave the iron at high heat for more than a few minutes at a time when you’re not
+using it, as it may cause excessive oxidation of the tip that makes it harder to clean and
+tin later.
+● When reflowing (melting) solder you’ve already applied to the board, ensure that ​ all​ of
+the solder is melted before you apply more or remove the iron. Not doing this will create
+a “cold joint” that results in a high-resistance bridge between the solder and pad, which
+can result in failing connections later on as the board is used.
+● “Medium heat” as defined in this guide is 650°F. “High heat” is 800°F.
+
+In general, with a few exceptions, we’ll be soldering components with the flattest profile first (the
+LiPO protection module) and those with the tallest profile last (switches U$3 - U$5). The image
+below shows the order we’ll be moving in.
+
+<img src = "racecarimages/110806531436088.jpg" alt="hi" class="inline"/>
+
+Let’s get started!
+
+[Back to Top](#table-of-contents)
+
+### LiPO Protection Module (U$2)
+1. Apply flux to each of the 7 pads of the LiPO protection module. Turn the soldering iron to
+medium heat and apply a thin coating of solder to each pad. You’ll know you’ve applied
+enough when the entire pad is covered and the solder makes a very slight bulge upward.
+
+<img src = "racecarimages/110806531436089.jpg" width = 150/><img src = "racecarimages/110806531436090.jpg" width = 150/>
+
+2. Flux and apply a similar coating of solder to the corresponding 7 pads on the power
+board. Again, make sure the entire pad is covered in a thin layer of solder.
+
+<img src = "racecarimages/110806531436091.jpg" width = 100/><img src = "racecarimages/110806531436092.jpg" width = 100/>
+<img src = "racecarimages/110806531436093.jpg" width = 100/>
+
+3. Place the protection module on the power board (pay careful attention to orientation) and
+heat one of the pads with the iron until ​ all ​ of the solder on that pad is uniformly melted.
+Once this occurs, apply enough additional solder to the pad until the solder bridges both
+the pad on the PCB and the corresponding pad on the LiPO protection module.
+
+a. It’s also a good idea to hold the iron in place for several seconds after you’ve
+applied enough solder to ensure the solder on the protection module melts and
+fuses to the solder on the board. This helps to avoid cold joints.
+
+b. Don’t apply so much solder as to make it bulge above the plane of the protection
+module.
+
+<img src = "racecarimages/110806531436094.jpg" width = 150/><img src = "racecarimages/110806531436095.jpg" width = 150/>
+
+[Back to Top](#table-of-contents)
+
+### NVIDIA Power Supply Jack (U$7)
+4. Apply flux to the 4 pads (both front and back) of the power jack, as well as the power
+jack pins. Insert the power jack into the power board, turn the board over, and use a clip
+on the “helping hands” to hold the board in place on the opposite end of the board. Make
+sure that the power jack is flush with the surface of the board before soldering
+
+5. Apply enough solder to each of the pads on the power jack until the pad is covered in
+solder and makes a conical tent shape.
+
+a. One of the pads is closer to a ground plane (the lighter-colored area) than the
+other three and might take a little longer to solder. If the solder doesn’t stick after
+holding the iron for several seconds, try turning the temperature to high heat. You
+can also apply more solder to the pad and suck it up with the solder sucker until it
+sticks to the pad; just make sure that the solder isn’t in a large ball when you’re
+finished.
+
+<img src = "racecarimages/110806531436096.jpg" width = 150/><img src = "racecarimages/110806531436097.jpg" width = 150/>
+
+[Back to Top](#table-of-contents)
+
+
+### Terminal Blocks (X1 - X9) and Some Small Capacitors (C8, C9)
+6. Since we have a large number of terminal blocks, we’ll break this down into several
+steps, with a few terminal blocks in each step. Start with terminal blocks X2 - X4 by
+applying flux to the pads and pins of the blocks. Place them onto the power board and
+use the helping hand to balance the board so the blocks lie flush with the board.
+a. Make sure the terminal blocks are oriented with the wire holes facing the ​ outside
+edge​ of the board, not the center.
+
+7. Solder the 12V terminals (the ones with a gap between the pin and ground plane) of
+each​ of the blocks first to ensure all of them remain stuck to the PCB if you accidentally
+nudge the board. Then solder the remaining pins (the GND pins) that are closer to the
+ground plane. You might need to use high heat to solder the remaining pins. In both
+cases, you’ll want to apply just enough solder to make a conical tent shape as pictured.
+
+8. Repeat step 7 for the remaining terminal blocks (X5 - X8) on that side of the board.
+
+<img src = "racecarimages/110806531436098.jpg" width = 300/>
+
+
+9. You might be tempted to solder blocks X1 and X9 right now. Don’t do this yet! Instead,
+grab two 100nF capacitors, apply flux to the pads and pins for C8 and C9 (near X1 and
+X9), and solder those capacitors on.
+
+a. It doesn’t matter which way you put these capacitors in since they’re
+non-polarized.
+
+b. It’s normal (and beneficial) to have some solder flow to the other side of the
+board and attach to the opposite pad since it improves the mechanical strength
+and electrical conductivity of the joint, but it isn’t strictly necessary for a good
+connection. Don’t sweat it if you can’t get it.
+
+<img src = "racecarimages/110806531436099.jpg" width = 150/><img src = "racecarimages/110806531436100.jpg" width = 150/>
+
+10. Repeat step 7 to solder X1 and X9 to the power board. You shouldn’t need to use the
+helping hand at this point since the terminal blocks on the other side of the board will
+naturally balance the board.
+
+To avoid repeating directions, the following steps will assume you’ve properly fluxed the pins
+and pads of each component before soldering them. This step is ​**critical​**; make sure you do it
+every time!
+
+### Small Slider Switches (SW1, SW2), Battery Power Jack (U$10), and Remaining Small Capacitors (C3, C4, C5, and C6)
+
+11. Apply solder to the outer (larger) pads of both switches ​ first​ before soldering the smaller
+pads. This is to help you ensure the switches have a good mechanical connection to the
+board and are straightened out before you finish soldering them.
+
+a. It’s fine for these switches if the solder is “pointier” and less cone-shaped than for
+the terminal blocks since the solder has a tendency to flow to the opposite side of
+the board for these switches.
+
+b. Don’t apply too much solder to these switches since the plastic in them can melt
+if heated for an extended period of time. Stop applying solder once you notice it
+sinking to the opposite side.
+
+
+
+[Back to Top](#table-of-contents)
+
 ## Support or Contact
 Contributors to this [Manual](http://f1tenth.org/car-assembly):
 Houssam Abbas - Assistant Professor, Oregon State University
