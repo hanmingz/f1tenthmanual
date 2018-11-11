@@ -319,6 +319,7 @@ At this point, your car should be assembled, the Jetson lights should flash when
 
 Note: At present, there's no way to know the battery's charge level except by measuring it with a multimeter as it runs. You might consider adding a low voltage LED or seven-segment LCD display (to show the voltage). <br/>
 
+[Back to Top](#table-of-contents)
 
 
 ### Tuning the FOCbox’s PID Gains
@@ -381,6 +382,7 @@ terminal. You should see an entry for “STMicroelectronics STMF407” or someth
 - If done correctly, the motor should not overshoot to more than 2 times the set<br/>
 RPM. (That is, if the RPM is set to 15,000, its peak value should not exceed 30,000.)
 
+[Back to Top](#table-of-contents)
 
 
 ### LiPo (Lithium Polymer) Battery Safety
@@ -396,6 +398,7 @@ likely the Jetson as well) and could cause a short circuit.<br/>
 
 See ​this video​ and ​this video​ for examples of what might happen if you don’t take care of your batteries. Be safe and don’t let these happen to you!<br/>
 
+[Back to Top](#table-of-contents)
 
 # Basic software install
 
@@ -403,9 +406,11 @@ See ​this video​ and ​this video​ for examples of what might happen if y
 
 ### Supported Versions 
 
-You will need to install the OS Ubuntu Xenial 16.04.01 and ROS Kinetic. <b/r>
-Could other combinations work? Sure.<b/r>
-Will we support them? Nope.<b/r>
+You will need to install the OS Ubuntu Xenial 16.04.01 and ROS Kinetic. 
+Could other combinations work? Sure.
+Will we support them? Nope.
+
+[Back to Top](#table-of-contents)
 
 
 ## Install ROS
@@ -416,60 +421,75 @@ Go to ROS.org and follow the instructions there to install the version of ROS re
 
 ## On Jetson
 
-On a high level, these are the things that need to be installed on the Jetson.<b/r>
-1. Linux GUI<b/r>
-2. Jetpack 3.2 flash<b/r>
-3. A re-flash of the Connect Tech Orbitty<b/r>
-4. ROS Kinetic<b/r>
+On a high level, these are the things that need to be installed on the Jetson.
+1. Linux GUI
+2. Jetpack 3.2 flash
+3. A re-flash of the Connect Tech Orbitty
+4. ROS Kinetic
 
 ### Connect terminals to the Jetson (aka “the device”)
 
-(These instructions are also in the Jeston’s Quick Start Guide under “Force USB Recovery Mode”. Refer to it to see all the buttons, ports and whatnot.)<b/r>
+(These instructions are also in the Jeston’s Quick Start Guide under “Force USB Recovery Mode”. Refer to it to see all the buttons, ports and whatnot.)
 
-Connect a display to the Jetson via HDMI port<b/r>
+Connect a display to the Jetson via HDMI port
 
-Connect a USB keyboard<b/r>
+Connect a USB keyboard
 
-Connect the Jetson to your host PC via the USB micro-B plug Plug to power<b/r>
+Connect the Jetson to your host PC via the USB micro-B plug Plug to power
 
 The Jetson should power on. If it doesn’t, push the ON button. Login: nvidia
-Password: nvidia<b/r>
+Password: nvidia
 
 <img src="racecarimages/110806531436064.jpg" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
 
 
 ### Install Linux
 Run
 $ cat NVIDIA-INSTALLER/README.txt
 
-And run the instructions that are in that file to install Ubuntu Linux. Note that TX1 comes with 14.04 LTS and TX2 comes with 16.04 LTS. There may be an additional step for TX1 if the course is using 16.04 LTS.<b/r>
+And run the instructions that are in that file to install Ubuntu Linux. Note that TX1 comes with 14.04 LTS and TX2 comes with 16.04 LTS. There may be an additional step for TX1 if the course is using 16.04 LTS.
+
+[Back to Top](#table-of-contents)
 
 
 ### Flash the Jetpack
-NOTE: you will need some 14GB of free space on the host computer for this step.<b/r>
+NOTE: you will need some 14GB of free space on the host computer for this step.
 
-Now that we have the GUI, we want to flash the Jetson with Nvidia’s Jetpack 3.2.<b/r>
+Now that we have the GUI, we want to flash the Jetson with Nvidia’s Jetpack 3.2.
 
-To do this, we need a host computer that is running Linux 14.04 (it seems 16.04 also works - try it if that’s what you have). The Jetpack is first downloaded onto the host computer and then transferred by micro USB cable over to the Jetson. Follow these instructions: https://developer.nvidia.com/embedded/jetpack<b/r>
+To do this, we need a host computer that is running Linux 14.04 (it seems 16.04 also works - try it if that’s what you have). The Jetpack is first downloaded onto the host computer and then transferred by micro USB cable over to the Jetson. Follow these instructions: https://developer.nvidia.com/embedded/jetpack
 
-What if you don’t have a Linux 14.04 computer laying around? (most of us don’t). See ​Appendix A​ of this doc for an amazing set of instructions by Klein Yuan which details how to use a virtual machine with a Mac to do the flash. Steps would probably work similarly for a PC that is running Virtual Box.<b/r>
+What if you don’t have a Linux 14.04 computer laying around? (most of us don’t). See ​Appendix A​ of this doc for an amazing set of instructions by Klein Yuan which details how to use a virtual machine with a Mac to do the flash. Steps would probably work similarly for a PC that is running Virtual Box.
+
+[Back to Top](#table-of-contents)
 
 
 
 ### Re-flash the Orbitty
 
-After the Jetson has been flashed with Jetpack, we will actually need to re-flash it with the Connect Tech Orbitty firmware. Otherwise on the TX2 there can be issues with the USB 3.0 not working on the Orbitty carrier board. A great link to instructions is from NVIDIA-Jetson: https://github.com/NVIDIA-Jetson/jetson-trashformers/wiki/JetsonTM-Flashing-and-Setup-Guide-f or-a-Connect-Tech-Carrier-Board​. ​Note that each time you flash all of the files<b/r> will essentially be deleted from your Jetson​. So make sure to save any work you may have already done and upload it.
-     
+After the Jetson has been flashed with Jetpack, we will actually need to re-flash it with the Connect Tech Orbitty firmware. Otherwise on the TX2 there can be issues with the USB 3.0 not working on the Orbitty carrier board. A great link to instructions is from NVIDIA-Jetson: https://github.com/NVIDIA-Jetson/jetson-trashformers/wiki/JetsonTM-Flashing-and-Setup-Guide-f or-a-Connect-Tech-Carrier-Board​. ​Note that each time you flash all of the fileswill essentially be deleted from your Jetson​. So make sure to save any work you may have already done and upload it.
+
+[Back to Top](#table-of-contents)
+
+
 ### Install ROS
 
 Lastly, we will want to install ROS Kinetic. Jetson Hacks on Github has scripts to install ROS Kinetic.
 - Here for TX2: ​https://github.com/jetsonhacks/installROSTX2​.
 - And here for TX1: ​https://github.com/jetsonhacks/installROSTX1​.
 
+[Back to Top](#table-of-contents)
+
+
 ### Wireless network setup (Penn ESE 680 only)
 
 We could log into the Jetson using a monitor, keyboard, and mouse, but what about when we’re driving the car? Fortunately, the Jetson has Wi-Fi capability and can be accessed remotely via an SSH session.
 Throughout this tutorial, you will be asked to configure the Jetson’s and your laptop’s network settings. Make sure to get these right! Using the wrong IP address may lead to conflicts with another classmate, meaning neither of you will be able to connect.<b/r>
+
+[Back to Top](#table-of-contents)
+
 
 ## Connecting the car to the access point
 
@@ -493,10 +513,13 @@ set up the Hokuyo to not allow routing through it.
 ## Connecting your computer to the access point
 
 Important Note​: when connecting your laptop to the router, use an IP address of the form 192.168.2.xxx​, where ​xxx​ is your team’s number multiplied by 4, added to 100, and then added to a number between 0 and 3 according to the alphabetical order of your last name in your team. For example, if I am on team 2, my name is Jack Harkins, and my teammates are Chris Kao, Sheil Sarda, and Houssam Abbas, I would add 1 since my last name (Harkins) comes second, making my final IP address ​192.168.2.209​.
-Linux<b/r>
+Linux
 
 If you’re running Linux in a dual-boot configuration or as a standalone OS, the steps to connect are the same as those for the Jetson above; just make sure you use the correct IP address for your laptop instead of the one for the Jetson.
 If you’re running Linux in a VM, connect your ​host​ computer to the router using the instructions below. Depending on which VM software you have and the default VM configuration, you may also need to set its network adapter configuration to NAT mode. This ensures your VM will share the wireless connection with your host OS instead of controlling the adapter itself.
+
+[Back to Top](#table-of-contents)
+
 
 ### Windows
 These instructions are for Windows 10, but they should be easily replicable on older Windows versions as well.
@@ -510,6 +533,9 @@ from the one you used on the car.)
 - If successful, the yellow exclamation mark on the wireless icon should go away. You can
 test connectivity using the ​ping​ utility included with the Windows command prompt.
 
+[Back to Top](#table-of-contents)
+
+
 ### Mac OS
 TODO
 
@@ -517,7 +543,7 @@ TODO
 The ​ssh​ utility is useful for gaining terminal access to your car when you don’t have a monitor around and when you don’t need to do visualization (e.g. via ​rviz​). Using this utility will give you the ability to edit and run your ROS code remotely and is especially useful when you want to rapidly develop and test new algorithms without the hassle a monitor can bring.
 
 Before doing this, make sure both your laptop and car are connected to the f110 network as described ​here​.
-1. Open a terminal on your laptop and type $ ​ssh <Jetson username>@<your car’s IP address​ to connect to the car. You will be prompted for your Jetson login password; type this in as well.
+1. Open a terminal on your laptop and type $ ​ssh <Jetson username> your car’s IP address​ to connect to the car. You will be prompted for your Jetson login password; type this in as well.
 - The first time you SSH into the car, you will probably be told that the “authenticity of the host can’t be established.” Just type in “yes” and the dialog will not appear again.
 2. If successful, you should see a prompt similar to ​ubuntu@tegra-ubuntu:~$​, which indicates that you’re now connected to the car’s terminal. Try starting ​roscore​ and running some ROS scripts. Don’t forget to source your working directory’s setup file beforehand.
 3. Don’t forget that while you’re SSH’ed into the car, you’re running over the wireless network. Try not to get too far away from the car so you don’t accidentally get logged out, and make sure you ​save your work often​.
@@ -538,6 +564,9 @@ Note that if you plan on using the wireless hotspot feature often, you will want
 Under General click on “Automatically connect to this network when available”.
 
 On your phone, tablet, or laptop you can now connect directly to this Hotspot, and you can use it with VNC viewer as well if you have set up a VNC server. The default IP address for Hotspot on the Jetson is 10.42.0.1.
+
+[Back to Top](#table-of-contents)
+
 
 ### Setting Up VNC Server on Jetson
 (This is not essential, just useful if you feel strongly about having a GUI-type of desktop)
@@ -592,6 +621,8 @@ Lastly, you will want to use an HDMI emulator, like this one (​https://www.ama
 
 Note that there are existing softwares to be able to set up VNC servers as well, such as Real VNC. However, we found that these could not install on the Jetson TX2 because it uses an AARM64 processor. That is why we had to use x11vnc.
 
+[Back to Top](#table-of-contents)
+
 
 ### Hokuyo 10LX ethernet connection setup
 TODO: Add pictures and snippets.
@@ -605,6 +636,8 @@ In the ipv4 tab add a route such that the eth0 port on the Jetson is assigned ip
 When you plug in the 10LX make sure that the Hokuyo connection is selected. If everything is configured properly you should now be able to ping 192.168.0.1.
 
 In the racecar config folder under ‘lidar_node’ set the following parameter: ‘ip_address: 192.168.0.10’. In addition in the sensors.launch.xml change the argument for the lidar launch from ‘hokuyo_node’ to ‘urg_node’ do the same thing for the node_type parameter.
+
+[Back to Top](#table-of-contents)
 
 
 ### Working directory setup
@@ -649,6 +682,8 @@ $​ source devel/setup.bash
 ```
 Congratulations! Your working directory is all set up. Now if you examine the contents of your workspace, you will see 3 folders (In the ROS world we call them meta-packages since they contain packages): algorithms, simulator, and system. Algorithms contains the brains of the car which run high level algorithms, such as wall following, pure pursuit, localization. Simulator contains racecar-simulator which is based off of MIT Racecar’s repository (​https://github.com/mit-racecar/racecar-simulator​) and includes some new worlds such as Levine 2nd floor loop. Simulator also contains f1_10_sim which contains some message types useful for passing drive parameters data from the algorithm nodes to the VESC nodes that drive the car. Lastly, System contains code from MIT Racecar that the car would not be able to work without. For instance, System contains ackermann_msgs (for Ackermann steering), racecar (which contains parameters for max speed, sensor IP addresses, and teleoperation), serial (for USB serial communication with VESC), and vesc (written by MIT for VESC to work with the racecar).
 
+[Back to Top](#table-of-contents)
+
 
 ## udev​ rules setup
 When you connect the VESC and LIDAR to the Jetson, the operating system will assign them device names of the form ​/dev/ttyACMx​, where x is a number that depends on the order in which they were plugged in. For example, if you plug in the LIDAR before you plug in the VESC, the LIDAR will be assigned the name ​/dev/ttyACM0​, and the VESC will be assigned /dev/ttyACM1​. This is a problem, as the car’s ROS configuration scripts need to know which device names the LIDAR and VESC are assigned, and these can vary every time we reboot the Jetson, depending on the order in which the devices are initialized.
@@ -684,6 +719,8 @@ If you want to add additional devices and don’t know their vendor or product I
 $ sudo ​udevadm info --name=<your_device_name> --attribute-walk
 ``` 
 making sure to replace ​<your_device_name>​ with the name of your device (e.g. ttyACM0 if that’s what the OS assigned it. The Unix utility ​dmesg​ can help you find that). The topmost entry will be the entry for your device; lower entries are for the device’s parents.
+
+[Back to Top](#table-of-contents)
 
 
 ## Manual control
@@ -728,7 +765,10 @@ If this gives you a segmentation error, and it’s caused by compiling the joy p
 Hokuyo​, the errors might be due to a port conflict: e.g., suppose that the lidar was assigned the (virtual serial bi-directional) port ttyACM0 by the OS. And suppose that the vesc_node is told the VESC is connected to port ttyACM0 (as per vesc.yaml). Then when the vesc_node receives joystick commands from joy_node (via ROS), it pushes them to ACM0 - so these messages actually go to the lidar, and the VESC gets garbage back. So change the vesc.yaml port entry to ttyACM1. (This whole discussion remains valid if you switch 0 and 1, i.e. if the OS assigned ACM1 to the lidar and your vesc.yaml lists ACM1). Note that everytime you power down and up, the OS will assign ports from scratch, which might again break your config files. So a better solution is to use udev rules, as explained in this ​section​. (See joy_node.cpp for the default port for the joystick. You can over-ride that using a parameter in the launch file. See the joy documentation for what parameter that is).
 - If you get urg_node related error messages, check the ports (e.g. an ip address in sensors.yaml can only be used by 10LX, not 30LX, and vice-versa for the /dev/ttyACM​n​).
 - If you get razor_imu errors, delete the IMU entry from the launch file - we’re not using an IMU in this build.
-  
+
+[Back to Top](#table-of-contents)
+
+
 ### Tuning the VESC Parameters
 
 You may want to fine tune your VESC parameters to match them to your car. Why? You might notice that your car with the default parameters drifts slightly to the side, or isn’t going as fast as you want it to. In order to tune your VESC parameters, navigate to racecar/racecar/config/racecar-v2/vesc.yaml. The vesc.yaml file is a configuration file where you can set parameters for erpm gain, steering angle offset, speed_min, speed_max, etc.
@@ -739,6 +779,9 @@ If your car’s motor is using a smaller or larger gear (where larger gear means
 
 If you notice that your car is not going straight, then you will want to modify your steering_angle_to_servo_offset. By default the value is around 0.53, and you’ll want to increase or decrease this slightly until the car is going straight.
 Other than these three parameters above, I didn’t change anything else but you are welcome to play around with these as you see fit. It’s a great learning experience!
+
+[Back to Top](#table-of-contents)
+
 
 ### Testing the LiDAR (USB only)
 
@@ -754,6 +797,9 @@ Once you’ve set up the LIDAR, you can test it using ​urg_node​, ​rviz​
 - Try moving a flat object, such as a book, in front of the LIDAR and to its sides. You should see a corresponding flat line of points on the ​rviz​ grid.
 - Try picking the car up and moving it around, and note how the LIDAR scan data changes,
 6. You can also see the LIDAR data in text form by using ​rostopic echo /scan​. The type of message published to it is ​sensor_msgs/Scan​, which you can also see by running ​rostopic info /scan​. There are many fields in this message type, but for our course, the most important one is ​ranges​, which is a list of distances the sensor records in order as it sweeps from its rightmost position to its leftmost position.
+
+[Back to Top](#table-of-contents)
+
 
 ## Recording bag data on the car
 
@@ -777,6 +823,9 @@ b. Note that ​rosbag​ also supports recording multiple topics at the same ti
 10. Play the rosbag file using ​rosbag play <your rosbag file>​. While the bag is playing, examine the topics list, and you will see a list of all topics that were recorded into the bag. Note that in addition to the topics you specified, ROS will also record the rosout​, ​rosout_agg​, and ​clock​ topics, which can be useful for debugging.
 11. View that recorded motor data by echoing the ​/vesc/sensors/core​ topic. Pay attention to how the motor RPM changed as you drove the car around. When the bag is out of data, it will stop publishing.
 
+[Back to Top](#table-of-contents)
+
+
 ### Simulation
 
 Why would we want to use a simulator? We want to test the car’s algorithms in a controlled environment before we bring it into the real world so that we minimize risk of crashing. If you’ve ever had to fix a Traxxas RC car before, you might know that they can be a pain to fix. For instance, if a front steering servo plastic piece were to break, we would have to disassemble about 20 parts in order to replace it. The simulator will be our best friend for quite a while during development.
@@ -794,10 +843,13 @@ You should see a rectangular-shaped track, this is the Levine Building 2nd floor
 
 If you have a Logitech F710 joystick on hand and want to try controlling the robot with the joystick, you can do that by pressing the LB button on the top left while moving the joypads.
 
+[Back to Top](#table-of-contents)
 
 ### Want a different navigation algorithm?
 
 As the launch file name suggests, by default, the car runs Wall Following algorithm in the simulator. To change that, you need to edit the launch file. See the online ​references​ to understand ROS launch files.
+
+[Back to Top](#table-of-contents)
 
 ### Want a different track?
 Other track files can be found in src/simulator/racecar-simulator/racecar_gazebo/worlds and have a .world extension.
@@ -815,6 +867,9 @@ Change the value to the name of one of the track files, e.g.
 <arg name=”world_name” value=”track_porto”>
 ```
 
+[Back to Top](#table-of-contents)
+
+
 ### Don’t want the GUI?
 
 If you are using the simulator to test some algorithms but don’t want to see the Gazebo GUI (because it’s heavy, or slow, or useless for now), you can disable it by editing the wall_following.launch file: in the <include .... racecar.launch> command, add this argument:
@@ -823,12 +878,18 @@ If you are using the simulator to test some algorithms but don’t want to see t
 <arg name=”gui” value=”false”>
 ```
 
+[Back to Top](#table-of-contents)
+
+
 ### Moving the car manually in simulation
 
 Gazebo has a useful feature whereby you can move the car manually by clicking and dragging, thus over-riding whatever navigation algorithm it’s running. To translate the car, click on the crossing double-headed arrows on the top left of the simulation window (see below). Then grab the car with your pointer and move it. To rotate the car in place, click on the circular arrows; then grab the car and rotate it.
 
 
 <img src="racecarimages/110806531436067.jpg" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
+
 
 ### Creating a world
 
@@ -851,6 +912,9 @@ Update all references to the new track name.
 /meshes and /models. Inside racecar_description/models you will want to make a new folder with your track name (e.g. “levine_track”) with a model.config file and model.sdf file. If you copy and paste a template from an existing track, the steps will be pretty self explanatory in terms of updating the track names to your new track name.
 3. Inside racecar_description/meshes you will copy in your .dae file.
 Now that you’ve created your .dae file with Sketchup and added it into the code, lastly you will want to update your launch file in order to use your new world. Follow instructions from the Gazebo Simulator section to update the launch file with your world name. Launch the world and you should see your world come up.
+
+[Back to Top](#table-of-contents)
+
 
 ## Algorithms
 
