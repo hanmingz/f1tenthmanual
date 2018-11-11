@@ -1504,6 +1504,61 @@ Screenshot of Rviz display with local costmap and global costmap
 
 [Back to Top](#table-of-contents)
 
+## Path Planning with TEB (Timed Elastic Band) Local Planner
+
+We’ve just seen move_base working in the simulator and real world. The default local planner
+for move_base was designed for differential drive robots - not Ackermann carlike robots - so you
+may have noticed some of these problems when running move_base code earlier:
+1. When the car got stuck facing a wall or was too close to a corner (and hence stuck in the
+high cost areas of the cost map), the car would just stop and didn’t know how to back up
+or get out of the situation.
+2. Car might oscillate a lot going down straightaways
+3. Turns are sometimes really wide, or sometimes cut corners very tightly. Because
+move_base local planner doesn’t have parameter for car turning radius.
+4. If car overshoots a turn, meaning it’s supposed to turn but then its inertia carries it past
+the turn, the car can’t recover.
+5. Placing obstacles in front of the car (like tennis ball cans), the car sometimes crashes
+into them.To address these problems, we use the TEB (Timed Elastic Band) local planner
+(​ http://wiki.ros.org/teb_local_planner​ ). TEB gets its name from the fact that it takes into account
+time ​ , meaning that it plans trajectories instead of just paths. What is the difference between a
+trajectory and a path? A trajectory outputs not only x and y coordinates, but also the time when
+the robot needs to reach each point - and implicitly the velocity at each step. Whereas a path is
+just a list of x and y coordinates.
+
+Install TEB:
+
+```markdown
+$​ sudo apt-get install ros-kinetic-teb-local-planner
+```
+
+TEB is a very thorough, well documented library with LOTS of parameters. Like over 40
+parameters. We configured parameters in
+algorithms/path_planning/params/teb_local_planner_params.yaml. There are params for
+min_turning_radius, wheelbase of the car, max_vel_x, and much more. In our
+follow_teb_local_plan.launch file, under the “move_base” node we add a rosparam that loads
+the teb_local_planner_params.yaml and have removed the default local planner params file.
+The underlying python file, follow_teb_local_plan.py, is very similar to the
+follow_move_base_cmd_vel.py used for the default local planner. The main difference is that
+because Teb literally outputs the velocity and steering angle as is, we don’t need to do
+conversion.
+
+Here are some of the really cool things that TEB enables us to do:
+1. When the car gets stuck in an area of the map with high cost, the car can back up and
+get out of the situation. How cool!
+2. When there are dynamic obstacles such as a person stopping in front of the car, the car
+will go around the person. Note that the default local planner could also do this, but TEB
+can do it better since the car can back up in case its turning radius is not big enough to
+clear the obstacle.
+3. The car can actually race autonomously one on one with another car now. Because the
+car can plan around the other car for passing.
+4. The car can do parallel parking (kind of). But it needs a lot of parameter tuning in terms
+of the min_obstacle_dist, the weight_kinetmatic_forward_drive, etc.
+
+All in all, TEB is just really cool!
+
+[Back to Top](#table-of-contents)
+
+
 ## Support or Contact
 Contributors to this [Manual](http://f1tenth.org/car-assembly):
 Houssam Abbas - Assistant Professor, Oregon State University
