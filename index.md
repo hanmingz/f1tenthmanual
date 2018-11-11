@@ -1804,13 +1804,13 @@ Let’s get started!
 medium heat and apply a thin coating of solder to each pad. You’ll know you’ve applied
 enough when the entire pad is covered and the solder makes a very slight bulge upward.
 
-<img src = "racecarimages/110806531436089.jpg" width = 150/> <img src = "racecarimages/110806531436090.jpg" width = 150/>
+<img src = "racecarimages/110806531436089.jpg" width = "150"/> <img src = "racecarimages/110806531436090.jpg" width = "150"/>
 
 2. Flux and apply a similar coating of solder to the corresponding 7 pads on the power
 board. Again, make sure the entire pad is covered in a thin layer of solder.
 
-<img src = "racecarimages/110806531436091.jpg" width = 100/> <img src = "racecarimages/110806531436092.jpg" width = 100/> 
-<img src = "racecarimages/110806531436093.jpg" width = 100/>
+<img src = "racecarimages/110806531436091.jpg" width = "100"/> <img src = "racecarimages/110806531436092.jpg" width = "100"/> 
+<img src = "racecarimages/110806531436093.jpg" width = "100"/>
 
 3. Place the protection module on the power board (pay careful attention to orientation) and
 heat one of the pads with the iron until ​ all ​ of the solder on that pad is uniformly melted.
@@ -1824,7 +1824,7 @@ fuses to the solder on the board. This helps to avoid cold joints.
 b. Don’t apply so much solder as to make it bulge above the plane of the protection
 module.
 
-<img src = "racecarimages/110806531436094.jpg" width = 150/> <img src = "racecarimages/110806531436095.jpg" width = 150/>
+<img src = "racecarimages/110806531436094.jpg" width = "150"/> <img src = "racecarimages/110806531436095.jpg" width = "150"/>
 
 [Back to Top](#table-of-contents)
 
@@ -1844,7 +1844,7 @@ can also apply more solder to the pad and suck it up with the solder sucker unti
 sticks to the pad; just make sure that the solder isn’t in a large ball when you’re
 finished.
 
-<img src = "racecarimages/110806531436096.jpg" width = 150/> <img src = "racecarimages/110806531436097.jpg" width = 150/>
+<img src = "racecarimages/110806531436096.jpg" width = "150"/> <img src = "racecarimages/110806531436097.jpg" width = "150"/>
 
 [Back to Top](#table-of-contents)
 
@@ -1880,7 +1880,7 @@ board and attach to the opposite pad since it improves the mechanical strength
 and electrical conductivity of the joint, but it isn’t strictly necessary for a good
 connection. Don’t sweat it if you can’t get it.
 
-<img src = "racecarimages/110806531436099.jpg" width = 150/> <img src = "racecarimages/110806531436100.jpg" width = 150/>
+<img src = "racecarimages/110806531436099.jpg" width = "150"/> <img src = "racecarimages/110806531436100.jpg" width = "150"/>
 
 10. Repeat step 7 to solder X1 and X9 to the power board. You shouldn’t need to use the
 helping hand at this point since the terminal blocks on the other side of the board will
@@ -1906,7 +1906,7 @@ b. Don’t apply too much solder to these switches since the plastic in them can
 if heated for an extended period of time. Stop applying solder once you notice it
 sinking to the opposite side.
 
-<img src = "racecarimages/110806531436101.jpg" width = 150/> <img src = "racecarimages/110806531436102.jpg" width = 150/>
+<img src = "racecarimages/110806531436101.jpg" width = "150"/> <img src = "racecarimages/110806531436102.jpg" width = "150"/>
 
 2. Solder the battery power jack similarly to how you soldered terminal blocks X2 - X4.
 You’ll want to first start with the pins separated from the ground plane and then solder
@@ -1915,7 +1915,7 @@ the GND pin connected to the ground plane, using high heat if necessary.
 The battery jack should stay in place by friction alone, so you shouldn’t need a
 helping hand or alligator clip.
 
-<img src = "racecarimages/110806531436103.jpg" width = 150/> <img src = "racecarimages/110806531436104.jpg" width = 150/>
+<img src = "racecarimages/110806531436103.jpg" width = "150"/> <img src = "racecarimages/110806531436104.jpg" width = "150"/>
 
 13. Grab three 100nF capacitors and one 330nF capacitor. Solder the remaining small
 capacitors according to step 9. For C3 and C4, solder the ground pin last and use higher
@@ -1925,7 +1925,7 @@ Make sure you place the capacitors into the correct pads on the board. It’s ea
 to get confused when you flip the board over, especially for C5 and C6. Also,
 note that C5 is 330nF and not 100nF.
 
-<img src = "racecarimages/110806531436105.jpg" width = 150/> <img src = "racecarimages/110806531436106.jpg" width = 150/>
+<img src = "racecarimages/110806531436105.jpg" width = "150"/> <img src = "racecarimages/110806531436106.jpg" width = "150"/>
 
 [Back to Top](#table-of-contents)
 
@@ -1939,7 +1939,7 @@ excess leads off the bottom of the board when you’re finished.
 15. Solder the four 3-pin male headers first. Use a long female header to align the male
 headers while you solder.
 
-<img src = "racecarimages/110806531436108.jpg" width = 150/> <img src = "racecarimages/110806531436109.jpg" width = 150/>
+<img src = "racecarimages/110806531436108.jpg" width = "150"/> <img src = "racecarimages/110806531436109.jpg" width = "150"/>
 
 16. **Optional​**: Solder header JP1 (near the LiPO protection module). We don’t recommend
 this since this header lies over a large ground plane (making it harder to solder) and isn’t
@@ -1990,6 +1990,324 @@ non-grounded pins first (they’re much easier).
 a. If solder isn’t sticking to the ground pads, you can try alternately applying a ball of
 solder and using the solder sucker on the excess until it does stick. You can also
 try refluxing the pins and pads.
+
+<img src = "racecarimages/110806531436112.jpg" alt="hi" class="inline"/>
+
+23. Remove the object you placed between the PCB and power converter, and turn the iron
+back down to medium heat.
+
+[Back to Top](#table-of-contents)
+
+
+### 12V to 8V Converter (U1), LEDs (D1, D2, and D2), and Large Capacitors (C1, C2, and C7)
+24. Place the 12V to 8V converter into its pad, making sure the ridged side faces terminal
+blocks X2 - X8 and the flat side faces the LiPO converter. Bend the two outer pins
+slightly to ensure it stays in the board when you solder it.
+
+<img src = "racecarimages/110806531436113.jpg" alt="hi" class="inline"/>
+
+25. Solder the power converter, aiming for a cone shape on each pin as you’ve done before.
+26. Solder the three LEDs onto the board, paying attention to orientation. The LEDs have a
+flat ridge on their negative sides, which should match up with the silkscreened images on
+the PCB.
+27. Place capacitors C1, C2, and C7 into the board, and ​ make sure the orientation is
+correct​ . These capacitors are polarized, and inserting them backwards could cause
+them to explode!
+a. C1 should be oriented with its ​ negative​ end facing towards the large, square
+DC-to-DC converter.
+b. C2 should be oriented with its ​ positive​ end facing towards the NVIDIA power
+jack near the edge of the board.
+c. C7 should be oriented with its ​ negative​ end facing the terminal blocks X2 - X8,
+28. Solder the non-grounded pin of each capacitor first to hold them in place, then solder the
+grounded pins similarly to how you soldered the large DC-to-DC converter, using higher
+heat if necessary. Above all, make sure solder covers the entire pad and is roughly
+cone-shaped to ensure a good connection.
+
+<img src = "racecarimages/110806531436114.jpg" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
+
+
+### Large Toggle Switches (U$3, U$4, and U$5)
+29. Starting with U$5 (the switch closest to the board’s edge), place the switch into the board
+and solder one of its pins. These pads are larger than most pads, so they will probably
+require more solder to be covered completely. Straighten the switch if necessary and
+then solder the other pad.
+a. If you find it hard to align the switch properly before soldering, use a helping hand
+on the other side of the board to balance it.
+b. Toggling the switches may also help to align them.
+30. Repeat step 28 for U$4 and U$3, in that order.
+
+<img src = "racecarimages/110806531436115.jpg" width = "150"/> <img src = "racecarimages/110806531436116.jpg" width = "150"/>
+
+[Back to Top](#table-of-contents)
+
+
+### Testing the Board
+31. Connect a regulated DC power supply (​ not a battery​ ) to the board, with the positive
+terminal going to the BATT connection on the white power jack and the negative terminal
+going to the GND_BATT connection. Set the voltage to 11.1V.
+32. Apply power to the board, turn switch U#3 on, and monitor the current being drawn. With
+no load, the current drawn should not exceed roughly 20 mA.
+a. If the current is too high, check the orientation of the LiPO battery protector and
+the capacitors. Make sure there are no stray pieces of solder on the board and
+no solder bridges between adjacent pins.
+b. If no current is drawn, make sure the solder joints for the battery connector and
+power converter completely cover the pads.
+
+<img src = "racecarimages/110806531436117.jpg" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
+
+### Cleaning the board (optional)
+
+To give the board a clean and professional finish, you can clean the flux residue from the board
+using isopropyl alcohol and a toothbrush. Make sure your soldering iron is off first (isopropyl
+alcohol is very flammable), apply some alcohol to the toothbrush, and scrub both sides of the
+board in a circular motion. Allow the alcohol to dry before you use the board. It’s normal for the
+board to feel a little sticky after the alcohol dries; this should go away within a few hours.
+
+<img src = "racecarimages/110806531436118.jpg" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
+
+## Appendix D: FAQ
+
+This appendix will be updated as we get new questions. Please post questions in the forum at
+f1tenth.org. Answers to common problems will be compiled here.
+
+### General
+1. Where can I find additional working examples of autonomous control code?
+Please see this repository of past competitors submissions:
+https://github.com/f1tenth/F110CPSWeek2018
+
+[Back to Top](#table-of-contents)
+
+### Mechanical
+1. Do I have a broken drivetrain? How can I fix it?
+Remove the rear housing on the vehicle’s differential. There is only a single screw securing it.
+
+<img src = "racecarimages/110806531436119.jpg" width = "150"/> <img src = "racecarimages/110806531436120.jpg" width = "150"/> 
+
+Once the housing is removed confirm that the gear on the output shaft is in contact and properly
+meshed with the slipper clutch gear.
+
+If it is not loosen the screw located in the slot of the motor housing so that the output shafts
+position may be adjusted. Once the gears are again properly meshed hold the assembly in
+place and secure the loosened screw.
+
+Before putting the cover back on test the system by rolling the car back and forth. You should
+see the center drive shaft turn etc. It is normal to have some noise on startup (this is the slipper
+clutch engaging).
+
+When you are finished place the cover back on the gearbox assembly and secure it. You need
+to slide one side in between the motor and the edge of the car first.
+
+2. Differential makes excessive noise...
+Use the ​ Lock, Rock, and Roll ​ method shown in this video to adjust the pressure on the slipper
+clutch: ​ https://youtu.be/C2iw9A7O_xk
+
+3. I’m not able to steer the car, no response from the steering servo...
+Double check that the servo wires are properly and securely connected. Confirm that you built
+the servo_out firmware for the VESC
+
+4. System identification failure and VESC tuning...
+First check that you have the correct firmware and hardware version installed.
+Second check that you have properly updated the parameters for system identification in the
+FOC tab. See the image in the VESC tuning/setup instruction section.
+
+Third check your battery voltage. Are you below the cutoff level? Are you using recommended
+batteries (e.g. 7 cell NiMH or 3S LiPO).
+
+If you have confirmed these things and system identification still fails consider the following
+suggestion...
+
+Excessive motor vibration and inertia from the drivetrain can negatively affect the system
+identification process. One option is to loosen the screw holding the motor and rotate the motor
+such that the gear on the output shaft is no longer in contact with the main gear connecting the
+motor to the drivetrain. You may consider a small piece of foam or similar to dampen the motor
+vibrations after loosening the screw.
+
+5. Removing the stock ESC housing for additional space...
+It initially appears that there is no way to remove this piece. In fact their is a screw underneath
+the black esc module contained in the blue housing. The black esc module is secured by double
+sided tape. Pry the module loose with a flat head screwdriver or similar and remove the screw. It
+should now be possible to remove the blue housing.
+
+6. Printing and laser cutting replacement parts...
+The base plate is a simple laser cut piece. The CAD files are provided
+(​ https://github.com/mlab-upenn/f1tenthpublic/tree/master/chassis​ ). For the laser cut pieces you
+will need the dwg files. While your machines may not be exactly the same as the ones at Penn
+every laser cutter I used is similar to the ones described here:
+https://vimeo.com/74134644
+https://vimeo.com/74134989
+In addition there are two small 3d printed parts, even a low cost printer like a maker bot will be
+fine. You can find the 3d printed parts here:
+https://github.com/mlab-upenn/f1tenthpublic/tree/master/chassis/3dPrints​ . Basic information
+about using a MakerBot can be found here:
+https://vimeo.com/147281524
+
+[Back to Top](#table-of-contents)
+
+### Wireless Network
+1. High packet-loss, excessive latency on wireless network...
+One common source of network latency is the physical connection between the antenna and the
+Jetson TX2 module. Please double check that the wires/connectors are properly seated on the
+Jetson TX2 module. In addition we recommend a high-quality router such as ____ in order to
+improve range and network throughput. Note that streaming images from onboard devices such
+as a camera will generally be slow no matter what.
+
+2. Increasing range of the gamepad
+Adding an antenna
+
+use the antenna (extra usb cable) provided with the Logitech controller.
+
+Using other remote controls
+
+Erwin Coumans of Google Brain provides this library for more typical RF based RC controllers:
+https://github.com/erwincoumans/RC-Receiver-Interface
+
+Uses the Quanum RC control with Teensy 3.2 as better joystick. A switch on the remote
+switches between human control, OFF and self-driving. (so you don't need to hold the buttons).
+We can also easily program it to keep a a number of constant speeds, nice for data collection
+
+[Back to Top](#table-of-contents)
+
+### Software
+
+1. VESC serial failures, VESC hardware and software revisions
+If you are using the VESC-x or the VESC-6 the data serialization specification has changed, you
+need to recompile the vesc_driver with alternate headers. Branches can be found here ___ for
+the VESC-x and here __ for the VESC-6
+2. LIDAR variants
+If you are using the Hokuyo 10LX please confirm that you properly configured the wired network
+connection as described in Section X.X.
+3. Installing pyTorch
+Preliminary
+Make sure that you system path includes CUDNN
+```markdown
+sudo python -c 'import os; print(os.getenv("CUDNN_LIB_DIR"))'
+```
+
+Install Script
+Sample bash script to install pyTorch. You have to build from source because pyTorch does not
+have any arm64 binaries (due to its use of anaconda).
+
+```markdown
+#!/usr/bin/env bash
+
+# install jetson-utils prerequisites
+sudo apt-get update
+sudo apt-get install libglew-dev glew-utils libgstreamer1.0-dev
+libgstreamer-plugins-base1.0-dev libglib2.0-dev
+sudo apt-get install python-pip
+sudo apt-get install python-tk python-gi-cairo
+sudo apt-get install libfreetype6-dev
+
+# upgrade pip
+pip --version
+pip install --upgrade pip==9.0.1
+pip --version
+sudo pip install matplotlib
+sudo pip install pyglet==1.3.1
+
+# lock pyglet for patch
+sudo sed -i 's/_have_getprocaddress = True/_have_getprocaddress =
+False/' /usr/local/lib/python2.7/dist-packages/pyglet/gl/lib_glx.py
+# setproctitle extension used by A3G
+sudo pip install setproctitle
+
+# install numpy
+sudo pip install numpy
+
+# clone pyTorch repo
+git clone https://github.com/pytorch/pytorch
+cd pytorch
+git tag
+
+git checkout v0.3.0
+git branch
+git submodule update --init
+
+# install prereqs
+sudo pip install -U setuptools
+sudo pip install -r requirements.txt
+
+# Develop Mode:
+python setup.py build_deps
+sudo python setup.py develop
+cd
+ln
+cd
+ln
+cd
+torch
+-s _C.so lib_C.so
+lib
+-s libATen.so.1 libATen.so
+../../
+git clone https://github.com/pytorch/vision
+cd vision
+sudo python setup.py install
+```
+
+4. Testing
+Run these commands...
+
+```markdown
+python # Open a REPL
+import torch
+torch.backends.cudnn.is_acceptable(torch.cuda.FloatTensor(1))
+# if this returns true you are ready to go!
+```
+Additional Resources
+See the following pages:
+https://github.com/dusty-nv/jetson-reinforcement
+https://github.com/andrewadare/jetson-tx2-pytorch
+
+5. Request for feedback...
+Does this work for you? Please list your Jetpack version, CUDA version, and CUDNN version. If
+you encountered any difficulties were you able to solve them? How?
+
+6. Installing Tensorflow
+First double check which Jetpack version and which CUDA version you have installed on your
+TX2. You should be able to determine the Jetpack version from the GUI that you used when
+flashing your board. If you are unsure of the CUDA version open a terminal and inspect the
+results of nvcc --version.
+
+Follow the instructions posted here, note that the wheels provided are quite old and may not
+work with your Jetpack/CUDA version...
+https://github.com/jetsonhacks/installTensorFlowJetsonTX
+
+Updated wheel files available here:
+A quick google search will likely yield your desired variant. Here are some alternate options for
+convenience. Add the wheel files to the appropriate installTensoFlowJetsonTX directory and
+proceed.
+
+Tensorflow Version 1.1 with JetPack 3.3
+https://devtalk.nvidia.com/default/topic/1031300/tensorflow-1-7-wheel-with-jetpack-3-2-/
+Tensorflow Version 1.6 with JetPack 3.1 or 3.2
+https://github.com/openzeka/Tensorflow-for-Jetson-TX2
+Using gstreamer and image processing pipeline
+Recording video from sensors like the Zed camera on the Jetson TX2 can be slow. This github
+gist details a solution using gstreamer:
+https://gist.github.com/schen2315/d05027bae32fe160f306b59663ad2dae
+Kernel
+
+7. USB doesn’t work...
+If you are using the Jetson TX2 you need to build the board support package for the Orbitty
+carrier. See Section X.XUSB works, but LIDAR and VESC do not work...
+First check that you are opening the correct device. It is highly recommended that you setup
+udev rules as described in Section x.x.
+If this fails to work then there is a strong chance that you need to install the ttyACM module. For
+a convenient installer visit ​ https://github.com/jetsonhacks/installACMModule
+
+[Back to Top](#table-of-contents)
+
+### Simulation and Experiments without Hardware
+
+8. Virtual Machine Setup...
+Coming soon.
 
 [Back to Top](#table-of-contents)
 
