@@ -1941,6 +1941,55 @@ headers while you solder.
 
 <img src = "racecarimages/110806531436108.jpg" width = 150/> <img src = "racecarimages/110806531436109.jpg" width = 150/>
 
+16. **Optional​**: Solder header JP1 (near the LiPO protection module). We don’t recommend
+this since this header lies over a large ground plane (making it harder to solder) and isn’t
+used for anything except for probing with a multimeter.
+
+17. Insert the two 14-pin Teensy headers into the board and solder the ​**two outermost** pins
+of each header before soldering the rest. This makes realigning the headers, if
+necessary, much easier than if you soldered all of them at once.
+
+<img src = "racecarimages/110806531436110.jpg" alt="hi" class="inline"/>
+
+[Back to Top](#table-of-contents)
+
+### Battery DC to 12V DC Converter
+
+This is probably the most ​**time-consuming​ part** of soldering this board, so take a break if you’re
+tired or hungry. Don’t proceed with this component until you feel ready!
+
+18. Flux both the ​ pads ​ and the ​ pins of the power converter​ before beginning. This is
+especially important for this component since both sides with pins lie over large ground
+planes, and the component itself acts like a large heat sink.
+
+19. Place a spare header or other small object (non-flammable) in the space underneath the
+power converter, and then place the power converter on top. The purpose of this step is
+two-fold:
+
+a. It mitigates the effects of the PCB and component acting as a heat sink, allowing
+solder to flow more freely into the pads.
+
+b. It makes it much easier to remove the component later if you make a mistake,
+which is important because these are the most expensive components on the
+power board.
+
+<img src = "racecarimages/110806531436111.jpg" alt="hi" class="inline"/>
+
+20. Clean your iron using the tip cleaner and turn it to high heat. Apply solder to the tip and
+heat one of the four pads and pins that isn’t directly attached to a ground plane. Don’t
+apply additional solder until you’ve heated the pad/pin for at least 15 seconds.
+
+21. Apply enough additional solder to make a cone shape. Make sure it sticks to the whole
+surface of the pad and not just the pin itself. It helps to keep the iron on one side of the
+pin and apply solder to the gap between the pad and pin on the opposite side so the
+solder doesn’t just stick to the iron.
+
+22. Repeat steps 20 and 21 for the five remaining pins. Make sure you solder the
+non-grounded pins first (they’re much easier).
+
+a. If solder isn’t sticking to the ground pads, you can try alternately applying a ball of
+solder and using the solder sucker on the excess until it does stick. You can also
+try refluxing the pins and pads.
 
 [Back to Top](#table-of-contents)
 
