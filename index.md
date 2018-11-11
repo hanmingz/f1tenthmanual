@@ -1865,7 +1865,7 @@ cases, you’ll want to apply just enough solder to make a conical tent shape as
 
 8. Repeat step 7 for the remaining terminal blocks (X5 - X8) on that side of the board.
 
-<img src = "racecarimages/110806531436098.jpg" width = 300/>
+<img src = "racecarimages/110806531436098.jpg" alt="hi" class="inline"/>
 
 
 9. You might be tempted to solder blocks X1 and X9 right now. Don’t do this yet! Instead,
