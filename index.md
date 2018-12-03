@@ -1,4 +1,8 @@
 
+sidebar:
+  nav: "docs"
+
+
 # Welcome to manual page of F1/10!
 {:.no_toc}
 
@@ -8,8 +12,6 @@ This site will be the future place of reference for F1/10 race cars! But it is a
 
 # Table of Contents
 
-sidebar:
-  nav: "docs"
   
 {:.no_toc}
 1. The generated Toc will be an ordered list
