@@ -2,9 +2,9 @@ docs:
   - title: What you need to start 
     children:
       - title: "Miscellaneous"
-        url: /index/miscellaneous/
+        url: /index.md/miscellaneous/
       - title: "The hardwre kit"
-        url: /index/the-hardware-kit/
+        url: /index.md/the-hardware-kit/
       
  sidebar:
   nav: "docs"
