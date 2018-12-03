@@ -7,6 +7,10 @@ This site will be the future place of reference for F1/10 race cars! But it is a
 <img src="f10cover.PNG" alt="hi" class="inline"/>
 
 # Table of Contents
+
+sidebar:
+  nav: "docs"
+  
 {:.no_toc}
 1. The generated Toc will be an ordered list
 {:toc}
