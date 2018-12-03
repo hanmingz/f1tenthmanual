@@ -1,10 +1,10 @@
-index.md:
+docs:
   - title: What you need to start 
     children:
       - title: "Miscellaneous"
-        url: /index.md/miscellaneous/
+        url: /docs/miscellaneous/
       - title: "The hardwre kit"
-        url: /index.md/the-hardware-kit/
+        url: /docs/the-hardware-kit/
       
  sidebar:
-  nav: "index.md"
+  nav: "docs"
