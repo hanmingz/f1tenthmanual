@@ -1,4 +1,4 @@
-docs:
+index.md:
   - title: What you need to start 
     children:
       - title: "Miscellaneous"
@@ -7,4 +7,4 @@ docs:
         url: /index.md/the-hardware-kit/
       
  sidebar:
-  nav: "docs"
+  nav: "index.md"
