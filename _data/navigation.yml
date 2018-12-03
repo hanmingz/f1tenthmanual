@@ -1,10 +1,10 @@
 docs:
-  - title: Getting Started
+  - title: What you need to start 
     children:
-      - title: "Quick-Start Guide"
-        url: /docs/quick-start-guide/
-      - title: "Structure"
-        url: /docs/structure/
+      - title: "Miscellaneous"
+        url: /docs/miscellaneous/
+      - title: "The hardwre kit"
+        url: /docs/the-hardware-kit/
       - title: "Installation"
         url: /docs/installation/
       - title: "Upgrading"
