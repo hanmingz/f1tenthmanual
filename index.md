@@ -1,7 +1,4 @@
 
-sidebar:
-  nav: "docs"
-
 
 # Welcome to manual page of F1/10!
 {:.no_toc}
