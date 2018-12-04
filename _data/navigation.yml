@@ -6,5 +6,5 @@ docs:
       - title: "The hardwre kit"
         url: /docs/the-hardware-kit/
       
- sidebar:
+sidebar:
   nav: "docs"
